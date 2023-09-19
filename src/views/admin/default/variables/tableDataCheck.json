@@ -1,0 +1,32 @@
+[
+  {
+    "course": ["React JS", true],
+    "lessons": "14/20(48)",
+    "duration": "24h 13min 28s",
+    "facilitator": "Etornam"
+  },
+  {
+    "course": ["Laravel 10", true],
+    "lessons": "20/20(48)",
+    "duration": "17h 43min 28s",
+    "facilitator": "Alex"
+  },
+  {
+    "course": ["HTML5", true],
+    "lessons": "11/20(48)",
+    "duration": "14h 4min 28s",
+    "facilitator": "Stacey"
+  },
+  {
+    "course": ["Boostrap", true],
+    "lessons": "23/20(48)",
+    "duration": "32h 15min 28s",
+    "facilitator": "Justina"
+  },
+  {
+    "course": ["Django", true],
+    "lessons": "16/20(58)",
+    "duration": "27h 13min 28s",
+    "facilitator": "Sloan"
+  }
+]

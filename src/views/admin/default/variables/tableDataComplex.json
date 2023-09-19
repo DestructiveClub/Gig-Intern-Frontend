@@ -1,0 +1,32 @@
+[
+  {
+    "skill": "React JS",
+    "status": "Approved",
+    "date": "1 April 2023",
+    "progress": 70
+  },
+  {
+    "skill": "Laravel 10",
+    "status": "Disable",
+    "date": "21 May 2023",
+    "progress": 61
+  },
+  {
+    "skill": "HTML5",
+    "status": "Error",
+    "date": "31 April 2023",
+    "progress": 85
+  },
+  {
+    "skill": "Bootrstrap",
+    "status": "Disable",
+    "date": "12 April 2023",
+    "progress": 70
+  },
+  {
+    "skill": "Django",
+    "status": "Approved",
+    "date": "19 April 2023",
+    "progress": 44
+  }
+]

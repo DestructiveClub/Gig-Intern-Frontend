@@ -136,9 +136,9 @@ function SignIn () {
                   onBlur={ handleEmailBlur }
                 />
                 <label
-                  className={ `absolute left-3 top-2 text-gray-600 transition-all ${email || email.length > 0
-                    ? 'bg-white px-2 text-xs -top-[8px]'
-                    : 'text-base text-gray-800'
+                  className={ `absolute left-3 top-2 text-gray-600 transition-all ${email || email.length >= 0
+                    ? 'bg-white px-2 text-xs -top-[12px] focus:text-blue-600'
+                    : 'text-base text-blue-600'
                     }` }
                 >
                   Email
@@ -154,11 +154,12 @@ function SignIn () {
                     }` }
                   onFocus={ handlePasswordFocus }
                   onBlur={ handlePasswordBlur }
+                  placeholder='***********'
                 />
                 <label
-                  className={ `absolute left-3 top-2 text-gray-600 transition-all  ${password || password.length > 0
-                    ? 'bg-white px-2 text-xs -top-[8px]'
-                    : 'text-base text-gray-800'
+                  className={ `absolute left-3 top-2 text-gray-600 transition-all ${password || password.length >= 0
+                    ? 'bg-white px-2 text-xs -top-[12px] text-blue-600'
+                    : 'text-base text-blue-600'
                     }` }
                 >
                   Password
@@ -194,7 +195,7 @@ function SignIn () {
 
             <div className="mt-10 text-center">
               <span className="text-sm font-normal text-black text-opacity-60">Not registered? </span>
-              <a href="#" className="text-blue-600 text-sm font-normal leading-[19.20px]">Create an Account</a></div>
+              <a href="https://accounts.google.com/signup" className="text-blue-600 text-sm font-normal leading-[19.20px]">Create an Account</a></div>
           </div>
         </div>
       </div>

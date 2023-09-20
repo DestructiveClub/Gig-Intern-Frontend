@@ -36,7 +36,7 @@ function SignUp() {
   };
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex h-screen">
       <div className="relative w-1/2 ">
         <img
           src="https://jahangirseven.com/socex/wp-content/uploads/sites/24/2020/04/scx03.png"
@@ -54,7 +54,7 @@ function SignUp() {
         </h1>
       </div>
 
-      <div className="gap-{20px} flex inline-flex w-0 flex-col items-start ">
+      <div className="gap-{20px} flex w-0 flex-col items-start ">
         <div className="flex flex-col space-y-6 ">
           <h1 className="Roboto-font leading-{54.856px} custom-font-settings  text-black ml-6 mt-4 font-sans text-[40px] font-bold not-italic opacity-80">
             Welcome To Gig Intern
@@ -64,7 +64,7 @@ function SignUp() {
           </h2>
           <div className="ml-6 mt-4 h-[1px] w-[604px] flex-grow bg-[#D9D9D9]"></div>
 
-          <div className="flex-start flex">
+          <div className="flex flex-start">
             <div className="ml-6 h-[6px] w-[120px] flex-grow bg-[#1F5EFF]"></div>
             <div className="ml-6 h-[6px] w-[120px] flex-grow bg-[#D9D9D9]"></div>
             <div className="ml-6 h-[6px] w-[120px] flex-grow bg-[#D9D9D9]"></div>
@@ -75,7 +75,7 @@ function SignUp() {
               <div className=" relative  mb-4 h-[30px] w-[190px] rounded-lg border border-blue-500 border-opacity-60 bg-white ">
                 <label
                   htmlFor="text-input"
-                  className="z-999px Roboto-font leading-{19.2px} text-black absolute top-[-12px] left-[24px] w-[116.627px] bg-white bg-cover font-sans text-[14px] font-normal not-italic  opacity-90 opacity-80 focus:outline-none"
+                  className="z-999px Roboto-font leading-{19.2px} text-black absolute top-[-12px] left-[24px] w-[116.627px] bg-white bg-cover font-sans text-[14px] font-normal not-italic  opacity-90  focus:outline-none"
                 >
                   First Name
                 </label>
@@ -122,12 +122,12 @@ function SignUp() {
                   className="[z-10px]  Roboto-font leading-{19.2px}  text-black absolute  top-[-12px]  left-[24px] w-[116.627px] font-sans text-[14px] font-normal not-italic opacity-80"
                 >
                   E-mail
+                  <input
+                    type="text"
+                    placeholder="paasensor@gmial.com"
+                    className="Roboto-font ml-4 mt-1 flex text-center font-sans text-[14px] font-normal text-[#D9D9D9] outline-none"
+                  />
                 </label>
-                <input
-                  type="text"
-                  placeholder="paasensor@gmial.com"
-                  className="Roboto-font ml-4 mt-1 flex text-center font-sans text-[14px] font-normal text-[#D9D9D9] outline-none"
-                />
               </div>
 
               <div className="relative mb-4  h-[30px] w-[293px] rounded-lg border border-blue-500 border-opacity-60 bg-white">
@@ -160,7 +160,7 @@ function SignUp() {
                 />
 
                 <svg
-                  className="absolute top-0 right-0 mt-2 mr-2  "
+                  className="absolute top-0 right-0 mt-2 mr-2 "
                   xmlns="http://www.w3.org/2000/svg"
                   width="21"
                   height="15"
@@ -189,7 +189,7 @@ function SignUp() {
                 />
 
                 <svg
-                  className="absolute top-0 right-0 mt-2 mr-2  "
+                  className="absolute top-0 right-0 mt-2 mr-2 "
                   xmlns="http://www.w3.org/2000/svg"
                   width="21"
                   height="15"
@@ -223,7 +223,7 @@ function SignUp() {
             </div>
           </form>
 
-          <div className="ml-6 flex flex-col">
+          <div className="flex flex-col ml-6">
             <NavLink
               to="/interest"
               className="Helvetica-font leading-{23.838px} py-90 rounded-10 flex h-[60px] w-[580px] items-center justify-center gap-[10px]  rounded-md border bg-[#1F5EFF]  px-10 font-sans text-[20px] font-bold  not-italic text-[#F6FBFF] "
@@ -231,15 +231,15 @@ function SignUp() {
               Next
             </NavLink>
 
-            <div className="flex-start mt-4 flex items-center">
+            <div className="flex items-center mt-4 flex-start">
               <div className="h-[1px] w-[274px] flex-grow bg-[#29ABFF] bg-opacity-60"></div>
-              <h2 className="Roboto-font leading-{19.2px} text-black font-sans text-[14px] font-bold font-normal not-italic opacity-80 ">
+              <h2 className="Roboto-font leading-{19.2px} text-black font-sans text-[14px] font-bold not-italic opacity-80 ">
                 OR
               </h2>
               <div className="h-[1px] w-[274px] flex-grow bg-[#29ABFF] bg-opacity-60"></div>
             </div>
 
-            <button className="py-90 rounded-10 mt-4 flex flex h-[60px] w-[580px] items-center justify-center justify-center  gap-[10px] rounded-md border   border-blue-500 px-10">
+            <button className="py-90 rounded-10 mt-4 flex  h-[60px] w-[580px] items-center justify-center  gap-[10px] rounded-md border   border-blue-500 px-10">
               <img className="h-[20px] w-[22.875px]" src={Google} alt="" />
               <h1 className="Roboto-font leading-{19.2px} text-black mt-14 mb-16 font-sans text-[12px] font-normal not-italic opacity-60">
                 continue with Google

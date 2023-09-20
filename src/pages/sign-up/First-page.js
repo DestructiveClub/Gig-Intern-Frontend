@@ -224,14 +224,12 @@ function SignUp() {
           </form>
 
           <div className="ml-6 flex flex-col">
-            <div className="py-90 rounded-10 flex  h-[60px] w-[580px] items-center  justify-center gap-[10px] rounded-md border  bg-[#1F5EFF] px-10">
-              <NavLink
-                to="/interest"
-                className="Helvetica-font leading-{23.838px} font-sans text-[20px] font-bold not-italic text-[#F6FBFF] "
-              >
-                Next
-              </NavLink>
-            </div>
+            <NavLink
+              to="/interest"
+              className="Helvetica-font leading-{23.838px} py-90 rounded-10 flex h-[60px] w-[580px] items-center justify-center gap-[10px]  rounded-md border bg-[#1F5EFF]  px-10 font-sans text-[20px] font-bold  not-italic text-[#F6FBFF] "
+            >
+              Next
+            </NavLink>
 
             <div className="flex-start mt-4 flex items-center">
               <div className="h-[1px] w-[274px] flex-grow bg-[#29ABFF] bg-opacity-60"></div>
@@ -241,12 +239,12 @@ function SignUp() {
               <div className="h-[1px] w-[274px] flex-grow bg-[#29ABFF] bg-opacity-60"></div>
             </div>
 
-            <div className="py-90 rounded-10 mt-4 flex flex h-[60px] w-[580px] items-center justify-center justify-center  gap-[10px] rounded-md border   border-blue-500 px-10">
+            <button className="py-90 rounded-10 mt-4 flex flex h-[60px] w-[580px] items-center justify-center justify-center  gap-[10px] rounded-md border   border-blue-500 px-10">
               <img className="h-[20px] w-[22.875px]" src={Google} alt="" />
               <h1 className="Roboto-font leading-{19.2px} text-black mt-14 mb-16 font-sans text-[12px] font-normal not-italic opacity-60">
                 continue with Google
               </h1>
-            </div>
+            </button>
           </div>
         </div>
       </div>

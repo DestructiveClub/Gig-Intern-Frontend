@@ -1,7 +1,7 @@
 import React from "react";
 import unsplash from "../../assets/unsplash.png";
 
-import Vector from "../assets/Vector.png";
+import Vector from "../../assets/Vector.png";
 import { NavLink } from "react-router-dom";
 
 const TermsCondition = () => {

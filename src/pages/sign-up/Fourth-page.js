@@ -16,7 +16,7 @@ const TermsCondition = () => {
         </h1>
       </div>
 
-      <div className="w-1/2 flex inline-flex flex-col items-start">
+      <div className="w-1/2 flex flex-col items-start">
         <div className="flex flex-col">
           <NavLink to="/courses">
             <img className="absolute ml-6 mt-4" src={Vector} alt="" />

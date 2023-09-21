@@ -2,7 +2,7 @@ import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 
 import AdminLayout from "layouts/admin";
-import SignUp from "pages/sign-up/First-page.js";  
+import SignUp from "pages/sign-up/First-page.js";
 import InterestPage from "pages/sign-up/Second-page.js";
 import Courses from "pages/sign-up/Third-page";
 import TermsCondition from "pages/sign-up/Fourth-page";

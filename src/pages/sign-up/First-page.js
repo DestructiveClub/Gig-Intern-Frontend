@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import Google from "../../assets/Google.png";
+import { Input } from "@material-tailwind/react";
 
 function SignUp() {
   const [formData, setFormData] = useState({
@@ -43,7 +44,7 @@ function SignUp() {
           alt=""
           className="h-full max-w-full"
         />
-        <h1 className=" helvetica-font absolute top-1/2 left-1/2 right-[75px] bottom-[68px] z-10 ml-8 h-[280px] w-[525px] -translate-x-1/2 transform  font-sans text-[30px] font-bold leading-normal text-[#F6FBFF]">
+        <h1 className=" helvetica-font absolute bottom-[68px] left-1/2 right-[75px] top-1/2 z-10 ml-8 h-[280px] w-[525px] -translate-x-1/2 transform  font-sans text-[30px] font-bold leading-normal text-[#F6FBFF]">
           Discover, Learn and,
           <br />
           Build your skills
@@ -59,67 +60,48 @@ function SignUp() {
           <h1 className="Roboto-font leading-{54.856px} custom-font-settings  text-black ml-6 mt-4 font-sans text-[40px] font-bold not-italic opacity-80">
             Welcome To Gig Intern
           </h1>
-          <h2 className="Roboto-font leading-{27.428px} custom-font-settings text-black ml-6 mb-4 font-sans text-[20px] font-normal not-italic opacity-60">
+          <h2 className="Roboto-font leading-{27.428px} custom-font-settings text-black mb-4 ml-6 font-sans text-[20px] font-normal not-italic opacity-60">
             Create a profile and start building
           </h2>
           <div className="ml-6 mt-4 h-[1px] w-[604px] flex-grow bg-[#D9D9D9]"></div>
 
-          <div className="flex flex-start">
+          <div className="flex-start flex">
             <div className="ml-6 h-[6px] w-[120px] flex-grow bg-[#1F5EFF]"></div>
             <div className="ml-6 h-[6px] w-[120px] flex-grow bg-[#D9D9D9]"></div>
             <div className="ml-6 h-[6px] w-[120px] flex-grow bg-[#D9D9D9]"></div>
             <div className="ml-6 h-[6px] w-[120px] flex-grow bg-[#D9D9D9]"></div>
           </div>
-          <form className="onSubmit={handleSubmit} ml-6">
-            <div className="flex-start flex  flex-shrink-0 gap-[21px]">
-              <div className=" relative  mb-4 h-[30px] w-[190px] rounded-lg border border-blue-500 border-opacity-60 bg-white ">
-                <label
-                  htmlFor="text-input"
-                  className="z-999px Roboto-font leading-{19.2px} text-black absolute top-[-12px] left-[24px] w-[116.627px] bg-white bg-cover font-sans text-[14px] font-normal not-italic  opacity-90  focus:outline-none"
-                >
-                  First Name
-                </label>
-                <input
-                  type="text"
-                  placeholder="Micheal"
-                  className="Roboto-font ml-6 mt-1 flex text-center font-sans text-[14px] font-normal text-[#D9D9D9] outline-none"
-                />
-              </div>
 
-              <div className=" relative  mb-4 h-[30px] w-[190px] rounded-lg border border-blue-500 border-opacity-60 bg-white">
-                <label
-                  htmlFor="text-input"
-                  className="Roboto-font leading-{19.2px}  text-black absolute top-[-12px] left-[24px] w-[116.627px] font-sans text-[14px] font-normal not-italic opacity-80"
-                >
-                  Last Name
-                </label>
-                <input
-                  type="text"
-                  placeholder="Owusu"
-                  className="Roboto-font ml-4 flex  text-center font-sans text-[14px] font-normal text-[#D9D9D9] outline-none"
-                />
-              </div>
+          <form className=" ml-6" onSubmit={handleSubmit}>
+            <div className="relative flex w-72 flex-row gap-2 ">
+              <Input
+                type="text"
+                color="blue"
+                label="First Name"
+                // className="Roboto-font focus:outline-none font-sans"
+                onClick={`label="First Name"`}
+              />
 
-              <div className=" relative mb-4 h-[30px] w-[188px] rounded-lg border border-blue-500 border-opacity-60 bg-white">
-                <label
-                  htmlFor="text-input"
-                  className="Roboto-font leading-{19.2px}  text-black absolute top-[-12px] left-[24px] w-[116.627px] font-sans text-[14px] font-normal not-italic opacity-80"
-                >
-                  Other Name
-                </label>
-                <input
-                  type="text"
-                  placeholder="Peprah"
-                  className="Roboto-font ml-4 mt-1 flex text-center font-sans text-[14px] font-normal text-[#D9D9D9] outline-none"
-                />
-              </div>
+              <Input
+                type="text"
+                color="blue"
+                label="Last Name"
+                className="Roboto-font flex text-center font-sans text-[14px] font-normal outline-none"
+              />
+              <Input
+                type="text"
+                // placeholder="Peprah"
+                color="blue"
+                label="Other Name"
+                // className="Roboto-font ml-4 mt-1 flex text-center font-sans text-[14px] font-normal text-[#D9D9D9] outline-none"
+              />
             </div>
 
             <div className="flex-start flex gap-[22px] ">
               <div className="relative mb-4 mt-1 h-[30px] w-[295px]  rounded-lg border border-blue-500 border-opacity-60 bg-white">
                 <label
                   htmlFor="email"
-                  className="[z-10px]  Roboto-font leading-{19.2px}  text-black absolute  top-[-12px]  left-[24px] w-[116.627px] font-sans text-[14px] font-normal not-italic opacity-80"
+                  className="[z-10px]  Roboto-font leading-{19.2px}  text-black absolute  left-[24px]  top-[-12px] w-[116.627px] font-sans text-[14px] font-normal not-italic opacity-80"
                 >
                   E-mail
                   <input
@@ -133,7 +115,7 @@ function SignUp() {
               <div className="relative mb-4  h-[30px] w-[293px] rounded-lg border border-blue-500 border-opacity-60 bg-white">
                 <label
                   htmlFor="number-input"
-                  className="Roboto-font leading-{19.2px}  text-black absolute top-[-12px] left-[24px] w-[116.627px] font-sans text-[14px] font-normal not-italic opacity-80"
+                  className="Roboto-font leading-{19.2px}  text-black absolute left-[24px] top-[-12px] w-[116.627px] font-sans text-[14px] font-normal not-italic opacity-80"
                 >
                   Phone Number
                 </label>
@@ -149,7 +131,7 @@ function SignUp() {
               <div className="rounded-15 relative mb-4 flex h-[30px] w-[295px] rounded-lg border border-blue-500 border-opacity-60 bg-white">
                 <label
                   htmlFor="password"
-                  className="Roboto-font leading-{19.2px}  text-black absolute top-[-12px] left-[24px] w-[116.627px] font-sans text-[14px] font-normal not-italic opacity-80"
+                  className="Roboto-font leading-{19.2px}  text-black absolute left-[24px] top-[-12px] w-[116.627px] font-sans text-[14px] font-normal not-italic opacity-80"
                 >
                   Password
                 </label>
@@ -160,7 +142,7 @@ function SignUp() {
                 />
 
                 <svg
-                  className="absolute top-0 right-0 mt-2 mr-2 "
+                  className="absolute right-0 top-0 mr-2 mt-2 "
                   xmlns="http://www.w3.org/2000/svg"
                   width="21"
                   height="15"
@@ -178,7 +160,7 @@ function SignUp() {
               <div className="rounded-15 relative mb-4 h-[30px] w-[294px] rounded-lg border border-blue-500 border-opacity-60 bg-white">
                 <label
                   htmlFor="password"
-                  className="Roboto-font leading-{19.2px}  text-black absolute top-[-12px] left-[24px] w-[116.627px] font-sans text-[14px] font-normal not-italic opacity-80"
+                  className="Roboto-font leading-{19.2px}  text-black absolute left-[24px] top-[-12px] w-[116.627px] font-sans text-[14px] font-normal not-italic opacity-80"
                 >
                   Confirm Password
                 </label>
@@ -189,7 +171,7 @@ function SignUp() {
                 />
 
                 <svg
-                  className="absolute top-0 right-0 mt-2 mr-2 "
+                  className="absolute right-0 top-0 mr-2 mt-2 "
                   xmlns="http://www.w3.org/2000/svg"
                   width="21"
                   height="15"
@@ -208,7 +190,7 @@ function SignUp() {
             <div className="relative mb-4 h-[124px] w-[610px] rounded-lg border border-blue-500 border-opacity-60 bg-white">
               <label
                 htmlFor="text-input"
-                className="Roboto-font leading-{19.2px}  text-black absolute top-[-12px] left-[24px] w-[116.627px] font-sans text-[14px] font-normal not-italic opacity-80"
+                className="Roboto-font leading-{19.2px}  text-black absolute left-[24px] top-[-12px] w-[116.627px] font-sans text-[14px] font-normal not-italic opacity-80"
               >
                 Bio
               </label>
@@ -223,7 +205,7 @@ function SignUp() {
             </div>
           </form>
 
-          <div className="flex flex-col ml-6">
+          <div className="ml-6 flex flex-col">
             <NavLink
               to="/interest"
               className="Helvetica-font leading-{23.838px} py-90 rounded-10 flex h-[60px] w-[580px] items-center justify-center gap-[10px]  rounded-md border bg-[#1F5EFF]  px-10 font-sans text-[20px] font-bold  not-italic text-[#F6FBFF] "
@@ -231,7 +213,7 @@ function SignUp() {
               Next
             </NavLink>
 
-            <div className="flex items-center mt-4 flex-start">
+            <div className="flex-start mt-4 flex items-center">
               <div className="h-[1px] w-[274px] flex-grow bg-[#29ABFF] bg-opacity-60"></div>
               <h2 className="Roboto-font leading-{19.2px} text-black font-sans text-[14px] font-bold not-italic opacity-80 ">
                 OR
@@ -241,7 +223,7 @@ function SignUp() {
 
             <button className="py-90 rounded-10 mt-4 flex  h-[60px] w-[580px] items-center justify-center  gap-[10px] rounded-md border   border-blue-500 px-10">
               <img className="h-[20px] w-[22.875px]" src={Google} alt="" />
-              <h1 className="Roboto-font leading-{19.2px} text-black mt-14 mb-16 font-sans text-[12px] font-normal not-italic opacity-60">
+              <h1 className="Roboto-font leading-{19.2px} text-black mb-16 mt-14 font-sans text-[12px] font-normal not-italic opacity-60">
                 continue with Google
               </h1>
             </button>

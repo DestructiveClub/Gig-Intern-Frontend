@@ -158,7 +158,7 @@ function SignIn () {
                   placeholder='***********'
                 />
                 <label
-                  className={ `absolute left-3 top-2 text-gray-600 transition-all ${password || password.length >= 0
+                  className={ `absolute left-3 top-2 text-gray-600 transition-all ${password || password.length > 0
                     ? 'bg-white px-2 text-xs -top-[12px] text-blue-600'
                     : 'text-base text-blue-600'
                     }` }
@@ -171,7 +171,7 @@ function SignIn () {
                   <input type="checkbox" name="" id="" className='accent-blue-500' />
                   <span className="pl-2 text-black text-opacity-70 text-[15px] font-normal">Keep me logged in</span>
                 </label>
-                <a href="http://" className="text-blue-600 text-[15px] font-normal leading-tight">Forgot Password?</a>
+                <a href="http://accounts.google.com/signup" className="text-blue-600 text-[15px] font-normal leading-tight">Forgot Password?</a>
               </div>
 
               <button

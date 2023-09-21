@@ -23,6 +23,15 @@ function SignIn () {
     loadGapi();
   }, []);
 
+  const attachSignin = useCallback((element, auth2) => {
+    auth2.attachClickHandler(element, {},
+      (googleUser) => {
+        updateUser(googleUser);
+      }, (error) => {
+        console.log(JSON.stringify(error));
+      });
+  }, []);
+
   useEffect(() => {
     if (!gapi) return;
 
@@ -35,7 +44,7 @@ function SignIn () {
       }
     };
     setAuth2();
-  }, [ gapi ]);
+  }, [ attachSignin, gapi ]);
 
   useEffect(() => {
     if (!gapi) return;
@@ -47,7 +56,7 @@ function SignIn () {
       };
       setAuth2();
     }
-  }, [ user, gapi ]);
+  }, [ user, gapi, attachSignin ]);
 
   const updateUser = (currentUser) => {
     const name = currentUser.getBasicProfile().getName();
@@ -58,14 +67,6 @@ function SignIn () {
     });
   };
 
-  const attachSignin = (element, auth2) => {
-    auth2.attachClickHandler(element, {},
-      (googleUser) => {
-        updateUser(googleUser);
-      }, (error) => {
-        console.log(JSON.stringify(error));
-      });
-  };
 
   const signOut = () => {
     const auth2 = gapi.auth2.getAuthInstance();

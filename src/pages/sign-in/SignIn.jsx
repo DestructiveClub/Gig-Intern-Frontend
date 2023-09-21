@@ -11,6 +11,7 @@ function SignIn () {
   const [ passwordFocus, setPasswordFocus ] = useState(false);
   const [ email, setEmailValue ] = useState('');
   const [ password, setPasswordValue ] = useState('');
+
   const [ gapi, setGapi ] = useState(null);
   const [ user, setUser ] = useState(null);
 
@@ -25,26 +26,28 @@ function SignIn () {
   useEffect(() => {
     if (!gapi) return;
 
-    const initAuth2 = async () => {
-      const auth2 = await loadAuth2(gapi, process.env.REACT_APP_CLIENT_ID, '');
+    const setAuth2 = async () => {
+      const auth2 = await loadAuth2(gapi, process.env.REACT_APP_CLIENT_KEY, '');
       if (auth2.isSignedIn.get()) {
         updateUser(auth2.currentUser.get());
       } else {
-        attachSignin(auth2);
+        attachSignin(document.getElementById('customBtn'), auth2);
       }
     };
-    initAuth2();
+    setAuth2();
   }, [ gapi ]);
 
-  const attachSignin = useCallback((auth2) => {
-    auth2.attachClickHandler(document.getElementById('customBtn'), console.log("hello"),{},
-      (googleUser) => {
-        updateUser(googleUser);
-      },
-      (error) => {
-        console.log(JSON.stringify(error));
-      });
-  }, []);
+  useEffect(() => {
+    if (!gapi) return;
+
+    if (!user) {
+      const setAuth2 = async () => {
+        const auth2 = await loadAuth2(gapi, process.env.REACT_APP_CLIENT_ID, '');
+        attachSignin(document.getElementById('customBtn'), auth2);
+      };
+      setAuth2();
+    }
+  }, [ user, gapi ]);
 
   const updateUser = (currentUser) => {
     const name = currentUser.getBasicProfile().getName();
@@ -53,6 +56,15 @@ function SignIn () {
       name: name,
       profileImg: profileImg,
     });
+  };
+
+  const attachSignin = (element, auth2) => {
+    auth2.attachClickHandler(element, {},
+      (googleUser) => {
+        updateUser(googleUser);
+      }, (error) => {
+        console.log(JSON.stringify(error));
+      });
   };
 
   const signOut = () => {

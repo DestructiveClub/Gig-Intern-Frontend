@@ -11,8 +11,7 @@ function SignIn () {
   const [ passwordFocus, setPasswordFocus ] = useState(false);
   const [ email, setEmailValue ] = useState('');
   const [ password, setPasswordValue ] = useState('');
-
-  const [ gapi, setGapi ] = useState(false);
+  const [ gapi, setGapi ] = useState(null);
   const [ user, setUser ] = useState(null);
 
   useEffect(() => {
@@ -23,40 +22,29 @@ function SignIn () {
     loadGapi();
   }, []);
 
-  const attachSignin = useCallback((element, auth2) => {
-    auth2.attachClickHandler(element, {},
-      (googleUser) => {
-        updateUser(googleUser);
-      }, (error) => {
-        console.log(JSON.stringify(error));
-      });
-  }, []);
-
   useEffect(() => {
     if (!gapi) return;
 
-    const setAuth2 = async () => {
-      const auth2 = await loadAuth2(gapi, process.env.REACT_APP_CLIENT_KEY, '');
+    const initAuth2 = async () => {
+      const auth2 = await loadAuth2(gapi, process.env.REACT_APP_CLIENT_ID, '');
       if (auth2.isSignedIn.get()) {
         updateUser(auth2.currentUser.get());
       } else {
-        attachSignin(document.getElementById('customBtn'), auth2);
+        attachSignin(auth2);
       }
     };
-    setAuth2();
-  }, [ attachSignin, gapi ]);
+    initAuth2();
+  }, [ gapi ]);
 
-  useEffect(() => {
-    if (!gapi) return;
-
-    if (!user) {
-      const setAuth2 = async () => {
-        const auth2 = await loadAuth2(gapi, process.env.REACT_APP_CLIENT_ID, '');
-        attachSignin(document.getElementById('customBtn'), auth2);
-      };
-      setAuth2();
-    }
-  }, [ user, gapi, attachSignin ]);
+  const attachSignin = useCallback((auth2) => {
+    auth2.attachClickHandler(document.getElementById('customBtn'), console.log("hello"),{},
+      (googleUser) => {
+        updateUser(googleUser);
+      },
+      (error) => {
+        console.log(JSON.stringify(error));
+      });
+  }, []);
 
   const updateUser = (currentUser) => {
     const name = currentUser.getBasicProfile().getName();
@@ -66,8 +54,6 @@ function SignIn () {
       profileImg: profileImg,
     });
   };
-
-
 
   const signOut = () => {
     const auth2 = gapi.auth2.getAuthInstance();
@@ -189,9 +175,9 @@ function SignIn () {
             </div>
             {/* <GoogleLogin /> */ }
 
-            <div id="customBtn" className="rounded-[4px]  py-2 flex justify-center border-[1px] border-[#dadce0] hover:border-sky-200  hover:bg-sky-100 w-full cursor-pointer">
+            <button id="customBtn" className="rounded-[4px]  py-2 flex justify-center border-[1px] border-[#dadce0] hover:border-sky-200  hover:bg-sky-100 w-full cursor-pointer">
               <p className="text-[#3c4043] text-[14px] flex gap-1 justify-center"><span className="w-[40px] text-2xl"><FcGoogle /></span>Sign in with Google</p>
-            </div>
+            </button>
 
             <div className="mt-10 text-center">
               <span className="text-sm font-normal text-black text-opacity-60">Not registered? </span>

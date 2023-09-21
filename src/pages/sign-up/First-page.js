@@ -26,7 +26,7 @@ function SignUp() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Perform form validation here
+    
     if (formData.password !== formData.confirmPassword) {
       alert("Passwords do not match");
       return;
@@ -37,14 +37,15 @@ function SignUp() {
   };
 
   return (
-    <div className="flex h-screen">
+    <div className="flex min-h-screen">
       <div className="relative w-1/2 ">
         <img
           src="https://jahangirseven.com/socex/wp-content/uploads/sites/24/2020/04/scx03.png"
           alt=""
           className="h-full max-w-full"
         />
-        <h1 className=" helvetica-font absolute bottom-[68px] left-1/2 right-[75px] top-1/2 z-10 ml-8 h-[280px] w-[525px] -translate-x-1/2 transform  font-sans text-[30px] font-bold leading-normal text-[#F6FBFF]">
+        <h1 
+        className="right-75 bottom-[-40px] helvetica-font absolute  left-1/2   z-10 ml-8 h-[280px] w-[75%] -translate-x-1/2 transform  font-sans text-[30px] font-bold leading-normal text-[#F6FBFF]">
           Discover, Learn and,
           <br />
           Build your skills
@@ -55,8 +56,8 @@ function SignUp() {
         </h1>
       </div>
 
-      <div className="gap-{20px} flex w-0 flex-col items-start ">
-        <div className="flex flex-col space-y-6 ">
+      <div className="gap-{20px} flex w-0 flex-col items-start bg-white">
+        <div className="flex flex-col space-y-6 bg-white">
           <h1 className="Roboto-font leading-{54.856px} custom-font-settings  text-black ml-6 mt-4 font-sans text-[40px] font-bold not-italic opacity-80">
             Welcome To Gig Intern
           </h1>
@@ -72,42 +73,65 @@ function SignUp() {
             <div className="ml-6 h-[6px] w-[120px] flex-grow bg-[#D9D9D9]"></div>
           </div>
 
-          <form className=" ml-6" onSubmit={handleSubmit}>
-            <div className="relative flex w-72 flex-row gap-2 ">
-              <Input
-                type="text"
-                color="blue"
-                label="First Name"
-                // className="Roboto-font focus:outline-none font-sans"
-                onClick={`label="First Name"`}
-              />
+          <form className=" ml-6">
+            
+          <div className="flex-start flex gap-[22px] ">
+              <div className="relative mb-4 mt-1 h-[30px] w-[190px]  rounded-lg border border-blue-500 border-opacity-60 bg-white">
+                <label
+                  htmlFor="text-input"
+                  className="[z-10px] bg-white px-2 Roboto-font leading-{19.2px}  text-black absolute  left-[24px]  top-[-12px] w-[116.627px] font-sans text-[14px] font-normal not-italic opacity-80"
+                >
+                  First Name
+                  <input
+                    type="text"
+                    placeholder="Micheal"
+                    className="Roboto-font ml-[-8px] mt-[-6px] flex text-center font-sans text-[14px] font-normal text-[#D9D9D9] outline-none"
+                  />
+                </label>
+              </div>
 
-              <Input
-                type="text"
-                color="blue"
-                label="Last Name"
-                className="Roboto-font flex text-center font-sans text-[14px] font-normal outline-none"
-              />
-              <Input
-                type="text"
-                // placeholder="Peprah"
-                color="blue"
-                label="Other Name"
-                // className="Roboto-font ml-4 mt-1 flex text-center font-sans text-[14px] font-normal text-[#D9D9D9] outline-none"
-              />
+              
+              <div className="relative mb-4 mt-1 h-[30px] w-[190px]  rounded-lg border border-blue-500 border-opacity-60 bg-white">
+                <label
+                  htmlFor="text-input"
+                  className="[z-10px] bg-white px-3 Roboto-font leading-{19.2px}  text-black absolute  left-[24px]  top-[-12px] w-[116.627px] font-sans text-[14px] font-normal not-italic opacity-80"
+                >
+                  Last Name
+                  <input
+                    type="text"
+                    placeholder="Owusu"
+                    className="Roboto-font ml-[-8px] mt-[-6px] flex text-center font-sans text-[14px] font-normal text-[#D9D9D9] outline-none"
+                  />
+                </label>
+              </div>
+
+              <div className="relative mb-4 mt-1 h-[30px] w-[190px]  rounded-lg border border-blue-500 border-opacity-60 bg-white">
+                <label
+                  htmlFor="text-input"
+                  className="[z-10px] bg-white px-2 Roboto-font leading-{19.2px}  text-black absolute  left-[24px]  top-[-12px] w-[116.627px] font-sans text-[14px] font-normal not-italic opacity-80"
+                >
+                  Other Name
+                  <input
+                    type="text"
+                    placeholder="Kwasi"
+                    className="Roboto-font ml-[-8px] mt-[-6px] flex text-center font-sans text-[14px] font-normal text-[#D9D9D9] outline-none"
+                  />
+                </label>
+              </div>
+
             </div>
 
             <div className="flex-start flex gap-[22px] ">
               <div className="relative mb-4 mt-1 h-[30px] w-[295px]  rounded-lg border border-blue-500 border-opacity-60 bg-white">
                 <label
                   htmlFor="email"
-                  className="[z-10px]  Roboto-font leading-{19.2px}  text-black absolute  left-[24px]  top-[-12px] w-[116.627px] font-sans text-[14px] font-normal not-italic opacity-80"
+                  className="[z-10px] bg-white px-2 Roboto-font leading-{19.2px}  text-black absolute  left-[24px]  top-[-12px] w-[116.627px] font-sans text-[14px] font-normal not-italic opacity-80"
                 >
                   E-mail
                   <input
                     type="text"
                     placeholder="paasensor@gmial.com"
-                    className="Roboto-font ml-4 mt-1 flex text-center font-sans text-[14px] font-normal text-[#D9D9D9] outline-none"
+                    className="Roboto-font ml-4 mt-[-6px] flex text-center font-sans text-[14px] font-normal text-[#D9D9D9] outline-none"
                   />
                 </label>
               </div>
@@ -115,7 +139,7 @@ function SignUp() {
               <div className="relative mb-4  h-[30px] w-[293px] rounded-lg border border-blue-500 border-opacity-60 bg-white">
                 <label
                   htmlFor="number-input"
-                  className="Roboto-font leading-{19.2px}  text-black absolute left-[24px] top-[-12px] w-[116.627px] font-sans text-[14px] font-normal not-italic opacity-80"
+                  className="Roboto-font bg-white px-2 leading-{19.2px}  text-black absolute left-[24px] top-[-12px] w-[116.627px] font-sans text-[14px] font-normal not-italic opacity-80"
                 >
                   Phone Number
                 </label>
@@ -131,7 +155,7 @@ function SignUp() {
               <div className="rounded-15 relative mb-4 flex h-[30px] w-[295px] rounded-lg border border-blue-500 border-opacity-60 bg-white">
                 <label
                   htmlFor="password"
-                  className="Roboto-font leading-{19.2px}  text-black absolute left-[24px] top-[-12px] w-[116.627px] font-sans text-[14px] font-normal not-italic opacity-80"
+                  className="Roboto-font bg-white px-2 leading-{19.2px}  text-black absolute left-[24px] top-[-12px] w-[116.627px] font-sans text-[14px] font-normal not-italic opacity-80"
                 >
                   Password
                 </label>
@@ -160,7 +184,7 @@ function SignUp() {
               <div className="rounded-15 relative mb-4 h-[30px] w-[294px] rounded-lg border border-blue-500 border-opacity-60 bg-white">
                 <label
                   htmlFor="password"
-                  className="Roboto-font leading-{19.2px}  text-black absolute left-[24px] top-[-12px] w-[116.627px] font-sans text-[14px] font-normal not-italic opacity-80"
+                  className="Roboto-font bg-white px-1 leading-{19.2px}  text-black absolute left-[24px] top-[-12px] w-[116.627px] font-sans text-[14px] font-normal not-italic opacity-80"
                 >
                   Confirm Password
                 </label>
@@ -190,7 +214,7 @@ function SignUp() {
             <div className="relative mb-4 h-[124px] w-[610px] rounded-lg border border-blue-500 border-opacity-60 bg-white">
               <label
                 htmlFor="text-input"
-                className="Roboto-font leading-{19.2px}  text-black absolute left-[24px] top-[-12px] w-[116.627px] font-sans text-[14px] font-normal not-italic opacity-80"
+                className="Roboto-font bg-white px-4 leading-{19.2px}  text-black absolute left-[24px] top-[-12px] w-[116.627px] font-sans text-[14px] font-normal not-italic opacity-80"
               >
                 Bio
               </label>

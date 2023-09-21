@@ -22,7 +22,7 @@ function Courses () {
       </div>
 
       <div className="w-1/2 flex inline-flex flex-col items-start gap-{37px} ">
-        <div className='flex flex-col space-y-6 '>
+        <div className='flex flex-col space-y-6 bg-white'>
 
           <NavLink to='/interest'>
             <img
@@ -56,7 +56,7 @@ function Courses () {
             <div className="relative mb-4  bg-white border rounded-lg border-blue-500 border-opacity-60 w-[619px] h-[60px]">
               <label
                 htmlFor="courses"
-                className="text-[14px] absolute  top-[-12px] left-[24px] not-italic font-sans Roboto-font font-normal leading-{19.2px} text-black opacity-80 ">
+                className="text-[14px] absolute bg-white px-2 top-[-12px] left-[24px] not-italic font-sans Roboto-font font-normal leading-{19.2px} text-black opacity-80 ">
                 Select your Courses
               </label>
               <input
@@ -69,7 +69,7 @@ function Courses () {
             <div div className="relative mb-4  bg-white border rounded-lg border-blue-500 border-opacity-60 w-[619px] h-[60px]">
               <label
                 htmlFor="courses"
-                className="text-[14px] absolute  top-[-12px] left-[24px] not-italic font-sans Roboto-font font-normal leading-{19.2px} text-black opacity-80 ">
+                className="text-[14px] bg-white px-2 absolute  top-[-12px] left-[24px] not-italic font-sans Roboto-font font-normal leading-{19.2px} text-black opacity-80 ">
                 Select your Courses
               </label>
               <input
@@ -82,7 +82,7 @@ function Courses () {
             <div className="relative mb-4  bg-white border rounded-lg border-blue-500 border-opacity-60 w-[619px] h-[60px]">
               <label
                 htmlFor="courses"
-                className="text-[14px] absolute  top-[-12px] left-[24px] not-italic font-sans Roboto-font font-normal leading-{19.2px} text-black opacity-80 ">
+                className="text-[14px] bg-white px-2 absolute  top-[-12px] left-[24px] not-italic font-sans Roboto-font font-normal leading-{19.2px} text-black opacity-80 ">
                 Select your Courses
               </label>
               <input
@@ -95,7 +95,7 @@ function Courses () {
             <div className="relative mb-4  bg-white border rounded-lg border-blue-500 border-opacity-60 w-[619px] h-[60px]">
               <label
                 htmlFor="courses"
-                className="text-[14px] absolute  top-[-12px] left-[24px] not-italic font-sans Roboto-font font-normal leading-{19.2px} text-black opacity-80 ">
+                className="text-[14px] bg-white px-2 absolute  top-[-12px] left-[24px] not-italic font-sans Roboto-font font-normal leading-{19.2px} text-black opacity-80 ">
                 Select your Courses
               </label>
               <input
@@ -110,7 +110,7 @@ function Courses () {
             <div className="relative mb-4  bg-white border rounded-lg border-blue-500 border-opacity-60 w-[619px] h-[60px]">
               <label
                 htmlFor="courses"
-                className="text-[14px] absolute  top-[-12px] left-[24px] not-italic font-sans Roboto-font font-normal leading-{19.2px} text-black opacity-80 ">
+                className="text-[14px] bg-white px-2 absolute  top-[-12px] left-[24px] not-italic font-sans Roboto-font font-normal leading-{19.2px} text-black opacity-80 ">
                 Select your Courses
               </label>
               <input

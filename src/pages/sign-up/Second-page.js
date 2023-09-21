@@ -21,7 +21,7 @@ const InterestPage = () => {
         </h1>
       </div>
 
-      <div className="gap-{30px} flex inline-flex w-1/2 flex-col items-start  ">
+      <div className="gap-{30px} flex inline-flex w-1/2 flex-col items-start  bg-white">
         <div className="flex flex-col space-y-6 ">
           <NavLink to="/signup">
             <img className="absolute ml-6" src={Vector} alt="" />
@@ -46,7 +46,7 @@ const InterestPage = () => {
             <div className=" relative mb-4 h-[60px] w-[580px] rounded-lg border border-blue-500 border-opacity-60 bg-white">
               <label
                 htmlFor="text-input"
-                className="Roboto-font leading-{19.2px}  text-black absolute top-[-12px] left-[24px] font-sans text-[14px] font-normal not-italic opacity-80 "
+                className="Roboto-font leading-{19.2px}  text-black absolute top-[-12px] left-[24px] font-sans text-[14px] font-normal not-italic opacity-80 bg-white px-2"
               >
                 Select your role
               </label>
@@ -72,7 +72,7 @@ const InterestPage = () => {
 
               <div className=" mb-4  h-[38px] w-[187px] rounded-lg border border-blue-500 border-opacity-60 bg-white">
                 <text className="font-sf-pro-text ml-4 text-[15px] font-medium not-italic  text-[#1F5EFF] ">
-                  BackEndEnd Development
+                  BackEnd Development
                 </text>
               </div>
 

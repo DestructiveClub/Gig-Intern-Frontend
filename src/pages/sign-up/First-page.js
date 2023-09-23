@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import Google from "../../assets/Google.png";
-import { Input } from "@material-tailwind/react";
+//import { Input } from "@material-tailwind/react";
+import { initializeApp } from "firebase/app";
+import { getAuth, GoogleAuthProvider,signInWithPopup } from "firebase/auth";
 
 function SignUp() {
+
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -15,6 +18,17 @@ function SignUp() {
     bio: "",
   });
 
+  const [passwordVisible, setPasswordVisible] = useState(false);
+  const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
+
+  const togglePasswordVisibility = (field) => {
+    if (field === "password") {
+      setPasswordVisible(!passwordVisible);
+    } else if (field === "confirmPassword") {
+      setConfirmPasswordVisible(!confirmPasswordVisible);
+    }
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -23,10 +37,36 @@ function SignUp() {
     }));
   };
 
+  const firebaseConfig = {
+    apiKey: "AIzaSyCJHbWV7j6M-cEuowFQetUPJcQSbr5kL8Q",
+    authDomain: "gig-intern-27b8e.firebaseapp.com",
+    projectId: "gig-intern-27b8e",
+    storageBucket: "gig-intern-27b8e.appspot.com",
+    messagingSenderId: "580789098357",
+    appId: "1:580789098357:web:d4f4bf5e2adc585ae3e53c",
+    measurementId: "G-VYV0PFMTW2"
+  };
+  const app = initializeApp(firebaseConfig);
+
+  const handleGoogleSignIn = async () => {
+    try {
+      const auth = getAuth();
+      const provider = new GoogleAuthProvider();
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+  
+      // Now, you can access the user object and perform any necessary actions.
+      console.log("Google Sign-In Success: ", user);
+    } catch (error) {
+      console.error("Google Sign-In Error: ", error);
+    }
+  };
+  
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    
+
     if (formData.password !== formData.confirmPassword) {
       alert("Passwords do not match");
       return;
@@ -44,8 +84,8 @@ function SignUp() {
           alt=""
           className="h-full max-w-full"
         />
-        <h1 
-        className="right-75 bottom-[-40px] helvetica-font absolute  left-1/2   z-10 ml-8 h-[280px] w-[75%] -translate-x-1/2 transform  font-sans text-[30px] font-bold leading-normal text-[#F6FBFF]">
+        <h1
+          className="right-75 bottom-[-40px] helvetica-font absolute  left-1/2   z-10 ml-8 h-[280px] w-[75%] -translate-x-1/2 transform  font-sans text-[30px] font-bold leading-normal text-[#F6FBFF]">
           Discover, Learn and,
           <br />
           Build your skills
@@ -74,8 +114,8 @@ function SignUp() {
           </div>
 
           <form className=" ml-6">
-            
-          <div className="flex-start flex gap-[22px] ">
+
+            <div className="flex-start flex gap-[22px] ">
               <div className="relative mb-4 mt-1 h-[30px] w-[190px]  rounded-lg border border-blue-500 border-opacity-60 bg-white">
                 <label
                   htmlFor="text-input"
@@ -90,7 +130,7 @@ function SignUp() {
                 </label>
               </div>
 
-              
+
               <div className="relative mb-4 mt-1 h-[30px] w-[190px]  rounded-lg border border-blue-500 border-opacity-60 bg-white">
                 <label
                   htmlFor="text-input"
@@ -160,12 +200,13 @@ function SignUp() {
                   Password
                 </label>
                 <input
-                  type="password"
+                  type={passwordVisible ? "text" : "password"}
                   placeholder=""
                   className="my-6px Roboto-font ml-8 flex text-center font-sans text-[14px] font-normal text-[#D9D9D9] outline-none"
                 />
 
                 <svg
+                  onClick={() => togglePasswordVisibility("password")}
                   className="absolute right-0 top-0 mr-2 mt-2 "
                   xmlns="http://www.w3.org/2000/svg"
                   width="21"
@@ -189,12 +230,13 @@ function SignUp() {
                   Confirm Password
                 </label>
                 <input
-                  type="password"
+                  type={confirmPasswordVisible ? "text" : "password"}
                   placeholder=""
                   className="my-6px Roboto-font ml-8 flex text-center font-sans text-[14px] font-normal text-[#D9D9D9] outline-none"
                 />
 
                 <svg
+                  onClick={() => togglePasswordVisibility("confirmPassword")}
                   className="absolute right-0 top-0 mr-2 mt-2 "
                   xmlns="http://www.w3.org/2000/svg"
                   width="21"
@@ -245,7 +287,10 @@ function SignUp() {
               <div className="h-[1px] w-[274px] flex-grow bg-[#29ABFF] bg-opacity-60"></div>
             </div>
 
-            <button className="py-90 rounded-10 mt-4 flex  h-[60px] w-[580px] items-center justify-center  gap-[10px] rounded-md border   border-blue-500 px-10">
+            <button
+              onClick={handleGoogleSignIn}
+              className="py-90 rounded-10 mt-4 flex  h-[60px] w-[580px] items-center justify-center  gap-[10px] rounded-md border   border-blue-500 px-10"
+            >
               <img className="h-[20px] w-[22.875px]" src={Google} alt="" />
               <h1 className="Roboto-font leading-{19.2px} text-black mb-16 mt-14 font-sans text-[12px] font-normal not-italic opacity-60">
                 continue with Google

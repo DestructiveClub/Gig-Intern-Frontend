@@ -1,9 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import unsplash from '../../assets/unsplash.png';
 import Vector from '../../assets/Vector.png';
 import { NavLink } from 'react-router-dom';
 
 const TermsCondition = () => {
+
+  const [accepted, setAccepted] = useState(false);
+
+  const handleAccept = () => {
+    alert("Thanks for accepting the terms and conditions");
+    setAccepted(true);
+  };
+
+  const handleDecline = () => {
+    alert("Accept terms and conditions to proceed");
+    setAccepted(false);
+  };
+
   return (
     <div className="flex min-h-screen">
       <div className="w-1/2 relative">
@@ -45,13 +58,20 @@ const TermsCondition = () => {
             <div className="flex justify-between w-full absolute bottom-0 mb-4">
               <div className="flex gap-[24px] ml-6">
                 <div className="flex justify-center items-center gap-[10px] rounded-10 border rounded-md bg-[#FFF] w-[270px] h-[60px]">
-                  <button type="submit" className="text-[20px] not-italic font-sans Helvetica-font font-bold leading-{25.838px} text-[#1F5EFF] ">
+                  <button
+                    type="submit"
+                    onClick={handleDecline}
+                    className="text-[20px] not-italic font-sans Helvetica-font font-bold leading-{25.838px} text-[#1F5EFF] ">
                     Decline
                   </button>
                 </div>
 
                 <div className="flex justify-center items-center gap-[10px] rounded-10 border rounded-md bg-[#1F5EFF] w-[270px] h-[60px]">
-                  <button type="submit" className="text-[20px] not-italic font-sans Helvetica-font font-bold leading-{23.838px} text-[#F6FBFF] ">
+                  <button
+                    type="submit"
+                    onClick={handleAccept}
+                    className=
+                    "text-[20px] not-italic font-sans Helvetica-font font-bold leading-{23.838px} text-[#F6FBFF] ">
                     Accept
                   </button>
                 </div>

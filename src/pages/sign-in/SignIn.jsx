@@ -46,7 +46,7 @@ function SignIn () {
     setAuth2();
   }, [ attachSignin, gapi ]);
 
-  useEffect(() => {
+  const singIn = useEffect(() => {
     if (!gapi) return;
 
     if (!user) {
@@ -105,6 +105,8 @@ function SignIn () {
     // Your form submission logic here
   };
 
+
+
   return (
     <div className='flex justify-center bg-white'>
       <div className='items-end justify-center hidden p-10 md:flex' style={ {
@@ -131,15 +133,15 @@ function SignIn () {
                   type="text"
                   value={ email }
                   onChange={ handleEmailChange }
-                  className={ `w-full h-10 px-3 py-3 border rounded-lg text-gray-800 focus:outline-none focus:border-[#29ABFF] ${emailFocus ? 'border-[#29ABFF]' : 'border-gray-300'
+                  className={ `w-full h-10 px-3 py-3 border rounded-lg text-gray-800 focus:outline-none ${emailFocus ? 'border-blue-400' : 'border-gray-300'
                     }` }
                   onFocus={ handleEmailFocus }
                   onBlur={ handleEmailBlur }
                 />
                 <label
-                  className={ `absolute left-3 top-2 text-gray-600 transition-all ${email || email.length >= 0
-                    ? 'bg-white px-2 text-xs -top-[12px] focus:text-blue-600'
-                    : 'text-base text-blue-600'
+                  className={ `absolute left-2 top-2  transition-all ${emailFocus || email
+                    ? 'bg-white text-xs top-[-12px] px-2 text-blue-400'
+                    : 'text-base text-gray-600'
                     }` }
                 >
                   Email
@@ -151,16 +153,15 @@ function SignIn () {
                   type="password"
                   value={ password }
                   onChange={ handlePasswordChange }
-                  className={ `w-full h-10 px-3 py-3 border rounded-lg text-gray-800 focus:outline-none focus:border-[#29ABFF] ${passwordFocus ? 'border-[#29ABFF]' : 'border-gray-300'
+                  className={ `w-full h-10 px-3 py-3 border rounded-lg text-gray-800 focus:outline-none  ${passwordFocus ? 'border-blue-400' : 'border-gray-300'
                     }` }
                   onFocus={ handlePasswordFocus }
                   onBlur={ handlePasswordBlur }
-                  placeholder='***********'
                 />
                 <label
-                  className={ `absolute left-3 top-2 text-gray-600 transition-all ${password || password.length > 0
-                    ? 'bg-white px-2 text-xs -top-[12px] text-blue-600'
-                    : 'text-base text-blue-600'
+                  className={ `absolute left-2 top-2 transition-all ${passwordFocus || password
+                    ? 'bg-white text-xs top-[-12px] px-2 text-blue-400'
+                    : 'text-base  text-gray-600'
                     }` }
                 >
                   Password
@@ -176,7 +177,7 @@ function SignIn () {
 
               <button
                 type="submit"
-                className="mt-10 w-full h-12 bg-[#1E5DFF] text-white rounded-lg hover:bg-black transition duration-200 ease-linear focus:outline-none"
+                className="mt-10 w-full h-12 bg-blue-600 text-white rounded-lg hover:bg-black transition duration-200 ease-linear focus:outline-none"
               >
                 Sign In
               </button>
@@ -188,7 +189,7 @@ function SignIn () {
             </div>
             {/* <GoogleLogin /> */ }
 
-            <button id="customBtn" className="rounded-[4px]  py-2 flex justify-center border-[1px] border-[#dadce0] hover:border-sky-200  hover:bg-sky-100 w-full cursor-pointer">
+            <button onClick={ singIn } id="customBtn" className="rounded-[4px]  py-2 flex justify-center border-[1px] border-[#dadce0] hover:border-sky-200  hover:bg-sky-100 w-full cursor-pointer">
               <p className="text-[#3c4043] text-[14px] flex gap-1 justify-center"><span className="w-[40px] text-2xl"><FcGoogle /></span>Sign in with Google</p>
             </button>
 
@@ -197,9 +198,9 @@ function SignIn () {
               <a href="https://accounts.google.com/signup" className="text-blue-600 text-sm font-normal leading-[19.20px]">Create an Account</a></div>
           </div>
         </div>
-      </div>
+      </div >
 
-    </div>
+    </div >
   );
 }
 

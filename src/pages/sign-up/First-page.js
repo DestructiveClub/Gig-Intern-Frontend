@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import Google from "../../assets/Google.png";
 //import { Input } from "@material-tailwind/react";
-import { initializeApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider,signInWithPopup } from "firebase/auth";
+
 
 function SignUp() {
 
@@ -37,30 +36,7 @@ function SignUp() {
     }));
   };
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyCJHbWV7j6M-cEuowFQetUPJcQSbr5kL8Q",
-    authDomain: "gig-intern-27b8e.firebaseapp.com",
-    projectId: "gig-intern-27b8e",
-    storageBucket: "gig-intern-27b8e.appspot.com",
-    messagingSenderId: "580789098357",
-    appId: "1:580789098357:web:d4f4bf5e2adc585ae3e53c",
-    measurementId: "G-VYV0PFMTW2"
-  };
-  const app = initializeApp(firebaseConfig);
-
-  const handleGoogleSignIn = async () => {
-    try {
-      const auth = getAuth();
-      const provider = new GoogleAuthProvider();
-      const result = await signInWithPopup(auth, provider);
-      const user = result.user;
   
-      // Now, you can access the user object and perform any necessary actions.
-      console.log("Google Sign-In Success: ", user);
-    } catch (error) {
-      console.error("Google Sign-In Error: ", error);
-    }
-  };
   
 
   const handleSubmit = (e) => {
@@ -288,7 +264,7 @@ function SignUp() {
             </div>
 
             <button
-              onClick={handleGoogleSignIn}
+              
               className="py-90 rounded-10 mt-4 flex  h-[60px] w-[580px] items-center justify-center  gap-[10px] rounded-md border   border-blue-500 px-10"
             >
               <img className="h-[20px] w-[22.875px]" src={Google} alt="" />

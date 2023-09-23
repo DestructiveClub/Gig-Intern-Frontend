@@ -3,8 +3,6 @@ import unsplash from '../../assets/unsplash.png';
 import Google from '../../assets/Google.png';
 import Vector from '../../assets/Vector.png';
 import { NavLink } from 'react-router-dom';
-import { initializeApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider,signInWithPopup } from "firebase/auth";
 
 function Courses() {
 
@@ -22,31 +20,7 @@ function Courses() {
     setRoleIndex((prevIndex) => (prevIndex - 1 + roles.length) % roles.length);
   };
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyCJHbWV7j6M-cEuowFQetUPJcQSbr5kL8Q",
-    authDomain: "gig-intern-27b8e.firebaseapp.com",
-    projectId: "gig-intern-27b8e",
-    storageBucket: "gig-intern-27b8e.appspot.com",
-    messagingSenderId: "580789098357",
-    appId: "1:580789098357:web:d4f4bf5e2adc585ae3e53c",
-    measurementId: "G-VYV0PFMTW2"
-  };
-  const app = initializeApp(firebaseConfig);
-
-
-const handleGoogleSignIn = async () => {
-try {
-  const auth = getAuth();
-  const provider = new GoogleAuthProvider();
-  const result = await signInWithPopup(auth, provider);
-  const user = result.user;
-
-  // Now, you can access the user object and perform any necessary actions.
-  console.log("Google Sign-In Success: ", user);
-} catch (error) {
-  console.error("Google Sign-In Error: ", error);
-}
-};
+  
 
 
 
@@ -211,7 +185,7 @@ try {
             </div>
 
             <button
-            onClick={handleGoogleSignIn} 
+            
             className="flex justify-center mt-4 flex py-90 px-10 border-blue-500 justify-center items-center gap-[10px]  rounded-10 border rounded-md   w-[610px] h-[60px]">
               <img className='w-[22.875px] h-[22.875px]' src={Google} alt="" />
               <h1 className="text-[14px] mt-14 not-italic font-sans Roboto-font font-normal leading-{19.2px} text-black opacity-60 mb-16">continue with Google</h1>

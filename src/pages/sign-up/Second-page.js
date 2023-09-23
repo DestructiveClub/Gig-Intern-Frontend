@@ -3,8 +3,6 @@ import { NavLink } from "react-router-dom";
 import Google from "../../assets/Google.png";
 import unsplash from "../../assets/unsplash.png";
 import Vector from "../../assets/Vector.png";
-import { initializeApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider,signInWithPopup } from "firebase/auth";
 
 const InterestPage = () => {
 
@@ -14,31 +12,7 @@ const InterestPage = () => {
       "BackEnd Development",
       "FullStack Development",];
 
-      const firebaseConfig = {
-        apiKey: "AIzaSyCJHbWV7j6M-cEuowFQetUPJcQSbr5kL8Q",
-        authDomain: "gig-intern-27b8e.firebaseapp.com",
-        projectId: "gig-intern-27b8e",
-        storageBucket: "gig-intern-27b8e.appspot.com",
-        messagingSenderId: "580789098357",
-        appId: "1:580789098357:web:d4f4bf5e2adc585ae3e53c",
-        measurementId: "G-VYV0PFMTW2"
-      };
-      const app = initializeApp(firebaseConfig);
-
-  
-  const handleGoogleSignIn = async () => {
-    try {
-      const auth = getAuth();
-      const provider = new GoogleAuthProvider();
-      const result = await signInWithPopup(auth, provider);
-      const user = result.user;
-  
-      // Now, you can access the user object and perform any necessary actions.
-      console.log("Google Sign-In Success: ", user);
-    } catch (error) {
-      console.error("Google Sign-In Error: ", error);
-    }
-  };
+      
 
   const nextRole = () => {
     setRoleIndex((prevIndex) => (prevIndex + 1) % roles.length);
@@ -249,7 +223,7 @@ const InterestPage = () => {
             </div>
 
             <button
-              onClick={handleGoogleSignIn}
+              
               className="py-90 rounded-10 mt-4 flex flex h-[60px] w-[580px] items-center justify-center justify-center  gap-[10px] rounded-md border   border-blue-500 px-10">
               <img className="h-[22.875px] w-[22.875px]" src={Google} alt="" />
               <h1 className="Roboto-font leading-{19.2px} text-black mt-14 mb-16 font-sans text-[14px] font-normal not-italic opacity-60">

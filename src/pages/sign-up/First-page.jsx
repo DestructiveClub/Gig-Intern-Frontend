@@ -1,29 +1,15 @@
 import { NavLink } from "react-router-dom";
 import Google from "../../assets/Google.png";
-import { useCustomStates } from "./UseStates.jsx";
-import ToggleIcon from "components/icons/EyeToggleIcon";
+import { useCustomStates } from "../../components/UseStates.jsx";
+import Input from "components/fields/Input";
 
 
 function SignUp () {
   const {
-    firstNameFocus,
-    lastNameFocus,
-    otherNameFocus,
-    emailFocus,
-    passwordFocus,
-    confirmPasswordFocus,
-    phoneNumberFocus,
-    passwordVisibility,
-    confirmPasswordVisibility,
-    bioFocus,
     samePass,
     formData,
     handleSubmit,
-    handleFormFocus,
-    handleFormBlur,
-    handleFormValueChange,
-    handlePasswordVisibility
-
+    handleFormValueChange
   } = useCustomStates();
 
 
@@ -66,198 +52,93 @@ function SignUp () {
 
           <form className=" flex-col flex gap-[22px] ml-6 px-2">
             <div className="flex-start flex gap-[22px] ">
-              <label className={ `relative flex flex-grow w-full` }>
-                <input
-                  type="text"
-                  name="firstName"
-                  value={ formData.firstName }
-                  onChange={ handleFormValueChange }
-                  className={ `h-10 w-full rounded-lg border px-3 py-3 text-gray-800 focus:outline-none ${firstNameFocus ? "border-blue-400" : "border-gray-300"
-                    } ` }
-                  onFocus={ () => handleFormFocus('firstNameFocus') }
-                  onBlur={ () => handleFormBlur('firstNameFocus') }
-                />
-                <span
-                  className={ `absolute left-2 top-2 text-opacity-80 transition-all ${firstNameFocus || formData.firstName
-                    ? "top-[-12px] transition-all ease-in-out duration-[500ms] bg-white px-2 text-xs text-blue-400"
-                    : "text-base text-gray-600 text-opacity-80"
-                    }` }
-                >
-                  First Name
-                </span>
-              </label>
+              <Input
+                type="text"
+                name="firstName"
+                formData={ formData }
+                value={ formData.firstName }
+                onChange={ handleFormValueChange }
+                inputField="First Name"
+              />
+              <Input
+                type="text"
+                name="lastName"
+                formData={ formData }
+                value={ formData.lastName }
+                onChange={ handleFormValueChange }
+                inputField="Last Name"
+              />
 
-              <label className={ `relative flex flex-grow w-full` }>
-                <input
-                  type="text"
-                  name="lastName"
-                  value={ formData.lastName }
-                  onChange={ handleFormValueChange }
-                  className={ `h-10 w-full rounded-lg border px-3 py-3 text-gray-800 focus:outline-none ${lastNameFocus ? "border-blue-400" : "border-gray-300"
-                    }` }
-                  onFocus={ () => handleFormFocus('lastNameFocus') }
-                  onBlur={ () => handleFormBlur('lastNameFocus') }
-                />
-                <span
-                  className={ `absolute left-2 top-2 text-opacity-80 transition-all ${lastNameFocus || formData.lastName
-                    ? "top-[-12px] transition-all ease-in-out duration-[500ms] bg-white px-2 text-xs text-blue-400"
-                    : "text-base text-gray-600 text-opacity-80"
-                    }` }
-                >
-                  Last Name
-                </span>
-              </label>
-
-              <label className={ `relative flex flex-grow w-full` }>
-                <input
-                  type="text"
-                  name="otherName"
-                  value={ formData.otherName }
-                  onChange={ handleFormValueChange }
-                  className={ `h-10 w-full rounded-lg border px-3 py-3 text-gray-800 focus:outline-none ${lastNameFocus ? "border-blue-400" : "border-gray-300"
-                    }` }
-                  onFocus={ () => handleFormFocus('otherNameFocus') }
-                  onBlur={ () => handleFormBlur('otherNameFocus') }
-                />
-                <span
-                  className={ `absolute left-2 top-2 text-opacity-80 transition-all ${otherNameFocus || formData.otherName
-                    ? "top-[-12px] transition-all ease-in-out duration-[500ms] bg-white px-2 text-xs text-blue-400"
-                    : "text-base text-gray-600 text-opacity-80"
-                    }` }
-                >
-                  Other Name
-                </span>
-              </label>
+              <Input
+                type="text"
+                name="otherName"
+                formData={ formData }
+                value={ formData.otherName }
+                onChange={ handleFormValueChange }
+                inputField="Other Name"
+              />
             </div>
 
             <div className="flex-start flex gap-[22px] px-2 ">
-              <label className={ `relative w-full flex flex-grow ` }>
-                <input
-                  type="email"
-                  name="email"
-                  value={ formData.email }
-                  onChange={ handleFormValueChange }
-                  className={ `h-10 w-full rounded-lg border px-3 py-3 text-gray-800 focus:outline-none ${emailFocus ? "border-blue-400" : "border-gray-300"
-                    }` }
-                  onFocus={ () => handleFormFocus('emailFocus') }
-                  onBlur={ () => handleFormBlur('emailFocus') }
-                />
-                <span
-                  className={ `absolute left-2 top-2 text-opacity-80 transition-all ${emailFocus || formData.email
-                    ? "top-[-12px] transition-all ease-in-out duration-[500ms] bg-white px-2 text-xs text-blue-400"
-                    : "text-base text-gray-600 text-opacity-80"
-                    }` }
-                >
-                  Email
-                </span>
-              </label>
-
-
-              <label className={ `relative w-full flex flex-grow` }>
-                <input
-                  type="number"
-                  name="phoneNumber"
-                  value={ formData.phoneNumber }
-                  onChange={ handleFormValueChange }
-                  className={ `h-10 w-full rounded-lg border px-3 py-3 text-gray-800 focus:outline-none ${phoneNumberFocus ? "border-blue-400" : "border-gray-300"
-                    }` }
-                  onFocus={ () => handleFormFocus('phoneNumberFocus') }
-                  onBlur={ () => handleFormBlur('phoneNumberFocus') }
-                />
-                <span
-                  className={ `absolute left-2 top-2 text-opacity-80 transition-all ${phoneNumberFocus || formData.phoneNumber
-                    ? "top-[-12px] transition-all ease-in-out duration-[500ms] bg-white px-2 text-xs text-blue-400"
-                    : "text-base text-gray-600 text-opacity-80 text['Hello']"
-                    }` }
-                >
-                  Phone Number
-                </span>
-              </label>
+              <Input
+                type="email"
+                name="email"
+                value={ formData.email }
+                onChange={ handleFormValueChange }
+                inputField="Email"
+                required={ true }
+              />
+              <Input
+                type="number"
+                name="phoneNumber"
+                value={ formData.phoneNumber }
+                onChange={ handleFormValueChange }
+                inputField="Phone Number"
+                required={ true }
+              />
             </div>
 
             <div className="flex-start flex gap-[21px]">
 
               <div className="relative flex-grow w-full">
-                <label className={ `relative flex flex-grow w-full` }>
-                  <input
-                    type={ passwordVisibility ? "text" : "password" }
-                    name="password"
-                    value={ formData.password }
-                    onChange={ handleFormValueChange }
-                    className={ `h-10 w-full rounded-lg border px-3 py-3 text-gray-800 focus:outline-none ${passwordFocus && samePass ? "transition-[border] ease-in duration-[200ms] border-blue-400" : !samePass ? "transition-[border] ease-in duration-[500ms] border-red-600" : "border-gray-300"
-                      }` }
-                    onFocus={ () => handleFormFocus('passwordFocus') }
-                    onBlur={ () => handleFormBlur('passwordFocus') }
-                  />
-                  <span
-                    className={ `absolute left-2 top-2 text-opacity-80 transition-all ${passwordFocus || formData.password
-                      ? "top-[-12px] transition-all ease-in-out duration-[500ms] bg-white px-2 text-xs text-blue-400"
-                      : "text-base text-gray-600 text-opacity-80"
-                      }` }
-                  >
-                    Password
-                  </span>
-                  <ToggleIcon
-                    visibility={ passwordVisibility }
-                    onClick={ () => handlePasswordVisibility('passwordVisibility') }
-                  />
-                </label>
+                <Input
+                  type="password"
+                  name="password"
+                  value={ formData.password }
+                  onChange={ handleFormValueChange }
+                  inputField="Password"
+                  authPass={ samePass }
+                >
+                </Input>
                 { !samePass ? <p className="text-[14px] text-red-600 flex flex-col mb-[-10px]"> Passwords do not match</p> : <div className="my-[10px]"></div> }
               </div>
 
               <div className="relative flex-grow w-full">
 
-                <label className={ `relative flex flex-grow w-full` }>
-                  <input
-                    type={ confirmPasswordVisibility ? "text" : "password" }
-                    name="confirmPassword"
-                    value={ formData.confirmPassword }
-                    onChange={ handleFormValueChange }
-                    className={ `h-10 w-full rounded-lg border px-3 py-3 text-gray-800 focus:outline-none ${confirmPasswordFocus && samePass ? "border-blue-400" : !samePass ? "border-red-600" : "border-gray-300"
-                      }` }
-                    onFocus={ () => handleFormFocus('confirmPasswordFocus') }
-                    onBlur={ () => handleFormBlur('confirmPasswordFocus') }
-                  />
-                  <span
-                    className={ `absolute left-2 top-2 text-opacity-80 transition-all ${confirmPasswordFocus || formData.confirmPassword
-                      ? "top-[-12px] transition-all ease-in-out duration-[500ms] bg-white px-2 text-xs text-blue-400"
-                      : "text-base text-gray-600 text-opacity-80"
-                      }` }
-                  >
-                    Confirm Password
-                  </span>
-                  <ToggleIcon
-                    visibility={ confirmPasswordVisibility }
-                    onClick={ () => handlePasswordVisibility('confirmPasswordVisibility') }
-                  />
-                </label>
+                <Input
+                  type="password"
+                  name="confirmPassword"
+                  value={ formData.confirmPassword }
+                  onChange={ handleFormValueChange }
+                  inputField="Confirm Password"
+                  authPass={ samePass }
+                >
+                </Input>
                 { !samePass ? <p className="text-[14px] text-red-600 flex flex-col mb-[-10px]"> Passwords do not match</p> : <div className="my-[10px]"></div> }
               </div>
             </div>
 
             <div className="flex-start flex">
-              <label className={ `relative mb-2 h-[100px]  rounded-lg border  flex flex-grow w-full` }>
-                <textarea
-                  type="text"
-                  name="bio"
-                  placeholder={ `${!bioFocus ? `\nI am a software engineer` : ""}` }
-                  value={ formData.bio }
-                  onChange={ handleFormValueChange }
-                  className={ `h-full w-full rounded-lg border px-3 py-3 text-gray-800 focus:outline-none ${bioFocus ? "border-blue-400" : "border-gray-300"
-                    }` }
-                  onFocus={ () => handleFormFocus('bioFocus') }
-                  onBlur={ () => handleFormBlur('bioFocus') }
-                />
-                <span
-                  className={ `absolute left-2 top-2 text-opacity-80 transition-all ${bioFocus || formData.bio
-                    ? "top-[-12px] transition-all ease-in-out duration-[500ms] bg-white px-2 text-xs text-blue-400"
-                    : "text-base text-gray-600 text-opacity-80 text['Hello']"
-                    }` }
-                >
-                  { "Bio" }
-                </span>
-              </label>
-
+              <Input
+                htmlTag="textarea"
+                type="text"
+                name="bio"
+                placeholder={ `\nI am a software Engineer` }
+                value={ formData.bio }
+                onChange={ handleFormValueChange }
+                inputField="Bio"
+              >
+              </Input>
             </div>
           </form>
 
@@ -268,7 +149,7 @@ function SignUp () {
 
               <NavLink
                 to={ formData.password === formData.confirmPassword ? "/interest" : "" }
-                className="Helvetica-font leading-{23.838px} py-90 rounded-10 flex h-[50px] w-[500px] items-center justify-center gap-[5px]  rounded-md border bg-blue-500  px-10 font-sans text-[20px] font-bold  not-italic text-white"
+                className="Helvetica-font leading-{23.838px} mt-[-8px] py-90 rounded-10 flex h-[50px] w-[500px] items-center justify-center gap-[5px]  rounded-md border bg-blue-500  px-10 font-sans text-[20px] font-bold  not-italic text-white"
               >
                 Next
               </NavLink>

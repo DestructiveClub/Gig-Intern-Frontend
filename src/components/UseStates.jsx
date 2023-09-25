@@ -56,41 +56,43 @@ export const useCustomStates = () => {
     }));
   };
 
-  const handleFormValueChange = (e) => {
-    const { name, value } = e.target;
+  const handleFormValueChange = (name, updatedValue) => {
+    // e.preventDefault();
+    // console.log(`name is ${name} and value is ${value}`);
     setFormData((prevData) => ({
       ...prevData,
-      [ name ]: value,
+      [ name ]: updatedValue,
     }));
-    setSamePass(true);
-  };
+    // console.log(name, value)
+  setSamePass(true);
+};
 
-  const handlePasswordVisibility = (field) => {
-    setInitialState((prevData) => ({
-      ...prevData,
-      [ field ]: !prevData[ field ],
-    }));
-  };
+const handlePasswordVisibility = (field) => {
+  setInitialState((prevData) => ({
+    ...prevData,
+    [ field ]: !prevData[ field ],
+  }));
+};
 
 
 
-  return {
-    firstNameFocus: initialState.firstNameFocus,
-    lastNameFocus: initialState.lastNameFocus,
-    otherNameFocus: initialState.otherNameFocus,
-    emailFocus: initialState.emailFocus,
-    passwordFocus: initialState.passwordFocus,
-    confirmPasswordFocus: initialState.confirmPasswordFocus,
-    phoneNumberFocus: initialState.phoneNumberFocus,
-    bioFocus: initialState.bioFocus,
-    passwordVisibility: initialState.passwordVisibility,
-    confirmPasswordVisibility: initialState.confirmPasswordVisibility,
-    samePass,
-    formData,
-    handleSubmit,
-    handleFormFocus,
-    handleFormBlur,
-    handleFormValueChange,
-    handlePasswordVisibility
-  };
+return {
+  firstNameFocus: initialState.firstNameFocus,
+  lastNameFocus: initialState.lastNameFocus,
+  otherNameFocus: initialState.otherNameFocus,
+  emailFocus: initialState.emailFocus,
+  passwordFocus: initialState.passwordFocus,
+  confirmPasswordFocus: initialState.confirmPasswordFocus,
+  phoneNumberFocus: initialState.phoneNumberFocus,
+  bioFocus: initialState.bioFocus,
+  passwordVisibility: initialState.passwordVisibility,
+  confirmPasswordVisibility: initialState.confirmPasswordVisibility,
+  samePass,
+  formData,
+  handleSubmit,
+  handleFormFocus,
+  handleFormBlur,
+  handleFormValueChange,
+  handlePasswordVisibility
+};
 };

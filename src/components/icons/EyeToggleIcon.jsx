@@ -4,7 +4,7 @@ import React from "react";
 const ToggleIcon = ({ visibility, onClick }) => {
   return (
     <div
-      onClick={ onClick }
+      onClick={onClick}
       className="absolute right-0 top-0 mr-2 mt-2 cursor-pointer"
     >
       { visibility ? (

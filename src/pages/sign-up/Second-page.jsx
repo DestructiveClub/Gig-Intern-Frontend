@@ -3,10 +3,11 @@ import { NavLink } from "react-router-dom";
 import Google from "../../assets/Google.png";
 import unsplash from "../../assets/unsplash.png";
 import Vector from "../../assets/Vector.png";
-import { Card, Input, Menu, ButtonGroup } from "@material-tailwind/react";
 
 
 const InterestPage = () => {
+
+
   return (
     <div className="flex pr-4 flex-col md:flex-row max-w-screen max-h-screen bg-white">
       <div className="relative  md:w-1/2 md:flex hidden px-0">
@@ -70,11 +71,11 @@ const InterestPage = () => {
 
           <form className="ml-6">
             <div className="flex-start flex flex-shrink-0 gap-[10px]">
-              <Card color="blue" className=" mb-4  h-[38px] w-[187px] rounded-lg border border-blue-500 border-opacity-60 bg-white">
+              <div color="blue" className=" mb-4  h-[38px] w-[187px] rounded-lg border border-blue-500 border-opacity-60 bg-white">
                 <text className="text-center absolute font-sf-pro-text  ml-4 text-[15px] font-medium not-italic  text-[#1F5EFF] ">
                   FrontEnd Development
                 </text>
-              </Card>
+              </div>
 
               <div className=" mb-4  h-[38px] w-[187px] rounded-lg border border-blue-500 border-opacity-60 bg-white">
                 <text className="font-sf-pro-text ml-4 text-[15px] font-medium not-italic  text-[#1F5EFF] ">

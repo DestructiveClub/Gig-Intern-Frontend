@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import Google from "../../assets/Google.png";
 import { useCustomStates } from "./UseStates.jsx";
+import ToggleIcon from "components/icons/EyeToggleIcon";
 
 
 function SignUp () {
@@ -12,19 +13,22 @@ function SignUp () {
     passwordFocus,
     confirmPasswordFocus,
     phoneNumberFocus,
+    passwordVisibility,
+    confirmPasswordVisibility,
     bioFocus,
+    samePass,
     formData,
     handleSubmit,
     handleFormFocus,
     handleFormBlur,
-    handleFormValueChange
+    handleFormValueChange,
+    handlePasswordVisibility
 
   } = useCustomStates();
 
 
   return (
     <div
-      onClick={ handleSubmit }
       className="flex pr-4 flex-col md:flex-row max-h-screen bg-white" >
       <div className="relative md:w-1/2 md:flex hidden">
         <img
@@ -60,9 +64,9 @@ function SignUp () {
             <hr className="ml-6 h-[6px] w-[75%] flex-grow rounded-md bg-gray-600" />
           </div>
 
-          <form onSubmit={ handleSubmit } className=" flex-col flex gap-[22px] ml-6 px-2">
+          <form className=" flex-col flex gap-[22px] ml-6 px-2">
             <div className="flex-start flex gap-[22px] ">
-              <label className={ `relative` }>
+              <label className={ `relative flex flex-grow w-full` }>
                 <input
                   type="text"
                   name="firstName"
@@ -75,7 +79,7 @@ function SignUp () {
                 />
                 <span
                   className={ `absolute left-2 top-2 text-opacity-80 transition-all ${firstNameFocus || formData.firstName
-                    ? "top-[-12px] bg-white px-2 text-xs text-blue-400"
+                    ? "top-[-12px] transition-all ease-in-out duration-[500ms] bg-white px-2 text-xs text-blue-400"
                     : "text-base text-gray-600 text-opacity-80"
                     }` }
                 >
@@ -83,7 +87,7 @@ function SignUp () {
                 </span>
               </label>
 
-              <label className={ `relative` }>
+              <label className={ `relative flex flex-grow w-full` }>
                 <input
                   type="text"
                   name="lastName"
@@ -96,7 +100,7 @@ function SignUp () {
                 />
                 <span
                   className={ `absolute left-2 top-2 text-opacity-80 transition-all ${lastNameFocus || formData.lastName
-                    ? "top-[-12px] bg-white px-2 text-xs text-blue-400"
+                    ? "top-[-12px] transition-all ease-in-out duration-[500ms] bg-white px-2 text-xs text-blue-400"
                     : "text-base text-gray-600 text-opacity-80"
                     }` }
                 >
@@ -104,7 +108,7 @@ function SignUp () {
                 </span>
               </label>
 
-              <label className={ `relative` }>
+              <label className={ `relative flex flex-grow w-full` }>
                 <input
                   type="text"
                   name="otherName"
@@ -117,7 +121,7 @@ function SignUp () {
                 />
                 <span
                   className={ `absolute left-2 top-2 text-opacity-80 transition-all ${otherNameFocus || formData.otherName
-                    ? "top-[-12px] bg-white px-2 text-xs text-blue-400"
+                    ? "top-[-12px] transition-all ease-in-out duration-[500ms] bg-white px-2 text-xs text-blue-400"
                     : "text-base text-gray-600 text-opacity-80"
                     }` }
                 >
@@ -127,7 +131,7 @@ function SignUp () {
             </div>
 
             <div className="flex-start flex gap-[22px] px-2 ">
-              <label className={ `relative w-full` }>
+              <label className={ `relative w-full flex flex-grow ` }>
                 <input
                   type="email"
                   name="email"
@@ -140,7 +144,7 @@ function SignUp () {
                 />
                 <span
                   className={ `absolute left-2 top-2 text-opacity-80 transition-all ${emailFocus || formData.email
-                    ? "top-[-12px] bg-white px-2 text-xs text-blue-400"
+                    ? "top-[-12px] transition-all ease-in-out duration-[500ms] bg-white px-2 text-xs text-blue-400"
                     : "text-base text-gray-600 text-opacity-80"
                     }` }
                 >
@@ -149,7 +153,7 @@ function SignUp () {
               </label>
 
 
-              <label className={ `relative w-full` }>
+              <label className={ `relative w-full flex flex-grow` }>
                 <input
                   type="number"
                   name="phoneNumber"
@@ -162,7 +166,7 @@ function SignUp () {
                 />
                 <span
                   className={ `absolute left-2 top-2 text-opacity-80 transition-all ${phoneNumberFocus || formData.phoneNumber
-                    ? "top-[-12px] bg-white px-2 text-xs text-blue-400"
+                    ? "top-[-12px] transition-all ease-in-out duration-[500ms] bg-white px-2 text-xs text-blue-400"
                     : "text-base text-gray-600 text-opacity-80 text['Hello']"
                     }` }
                 >
@@ -172,80 +176,67 @@ function SignUp () {
             </div>
 
             <div className="flex-start flex gap-[21px]">
-              <label className={ `relative` }>
-                <input
-                  type="text"
-                  name="password"
-                  value={ formData.password }
-                  onChange={ handleFormValueChange }
-                  className={ `h-10 w-full rounded-lg border px-3 py-3 text-gray-800 focus:outline-none ${passwordFocus ? "border-blue-400" : "border-gray-300"
-                    }` }
-                  onFocus={ () => handleFormFocus('passwordFocus') }
-                  onBlur={ () => handleFormBlur('passwordFocus') }
-                />
-                <span
-                  className={ `absolute left-2 top-2 text-opacity-80 transition-all ${passwordFocus || formData.password
-                    ? "top-[-12px] bg-white px-2 text-xs text-blue-400"
-                    : "text-base text-gray-600 text-opacity-80"
-                    }` }
-                >
-                  Password
-                </span>
-                <svg
-                  className="absolute right-0 top-0 mr-2 mt-2 "
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="21"
-                  height="15"
-                  viewBox="0 0 21 15"
-                  fill="none"
-                >
-                  <path
-                    d="M10.5 4.29552C11.2595 4.29552 11.9879 4.59722 12.5249 5.13425C13.0619 5.67129 13.3636 6.39967 13.3636 7.15915C13.3636 7.91864 13.0619 8.64701 12.5249 9.18405C11.9879 9.72108 11.2595 10.0228 10.5 10.0228C9.74052 10.0228 9.01214 9.72108 8.4751 9.18405C7.93807 8.64701 7.63636 7.91864 7.63636 7.15915C7.63636 6.39967 7.93807 5.67129 8.4751 5.13425C9.01214 4.59722 9.74052 4.29552 10.5 4.29552ZM10.5 6.10352e-05C15.2727 6.10352e-05 19.3486 2.9687 21 7.15915C19.3486 11.3496 15.2727 14.3182 10.5 14.3182C5.72727 14.3182 1.65136 11.3496 0 7.15915C1.65136 2.9687 5.72727 6.10352e-05 10.5 6.10352e-05ZM2.08091 7.15915C2.85242 8.73445 4.05043 10.0617 5.53873 10.99C7.02703 11.9183 8.74592 12.4104 10.5 12.4104C12.2541 12.4104 13.973 11.9183 15.4613 10.99C16.9496 10.0617 18.1476 8.73445 18.9191 7.15915C18.1476 5.58386 16.9496 4.25662 15.4613 3.32832C13.973 2.40002 12.2541 1.90789 10.5 1.90789C8.74592 1.90789 7.02703 2.40002 5.53873 3.32832C4.05043 4.25662 2.85242 5.58386 2.08091 7.15915Z"
-                    fill="black"
-                    fill-opacity="0.6"
-                  />
-                </svg>
-              </label>
 
-
-              <label className={ `relative` }>
-                <input
-                  type="text"
-                  name="confirmPassword"
-                  value={ formData.confirmPassword }
-                  onChange={ handleFormValueChange }
-                  className={ `h-10 w-full rounded-lg border px-3 py-3 text-gray-800 focus:outline-none ${confirmPasswordFocus ? "border-blue-400" : "border-gray-300"
-                    }` }
-                  onFocus={ () => handleFormFocus('confirmPasswordFocus') }
-                  onBlur={ () => handleFormBlur('confirmPasswordFocus') }
-                />
-                <span
-                  className={ `absolute left-2 top-2 text-opacity-80 transition-all ${confirmPasswordFocus || formData.confirmPassword
-                    ? "top-[-12px] bg-white px-2 text-xs text-blue-400"
-                    : "text-base text-gray-600 text-opacity-80"
-                    }` }
-                >
-                  Confirm Password
-                </span>
-                <svg
-                  className="absolute right-0 top-0 mr-2 mt-2 "
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="21"
-                  height="15"
-                  viewBox="0 0 21 15"
-                  fill="none"
-                >
-                  <path
-                    d="M10.5 4.29552C11.2595 4.29552 11.9879 4.59722 12.5249 5.13425C13.0619 5.67129 13.3636 6.39967 13.3636 7.15915C13.3636 7.91864 13.0619 8.64701 12.5249 9.18405C11.9879 9.72108 11.2595 10.0228 10.5 10.0228C9.74052 10.0228 9.01214 9.72108 8.4751 9.18405C7.93807 8.64701 7.63636 7.91864 7.63636 7.15915C7.63636 6.39967 7.93807 5.67129 8.4751 5.13425C9.01214 4.59722 9.74052 4.29552 10.5 4.29552ZM10.5 6.10352e-05C15.2727 6.10352e-05 19.3486 2.9687 21 7.15915C19.3486 11.3496 15.2727 14.3182 10.5 14.3182C5.72727 14.3182 1.65136 11.3496 0 7.15915C1.65136 2.9687 5.72727 6.10352e-05 10.5 6.10352e-05ZM2.08091 7.15915C2.85242 8.73445 4.05043 10.0617 5.53873 10.99C7.02703 11.9183 8.74592 12.4104 10.5 12.4104C12.2541 12.4104 13.973 11.9183 15.4613 10.99C16.9496 10.0617 18.1476 8.73445 18.9191 7.15915C18.1476 5.58386 16.9496 4.25662 15.4613 3.32832C13.973 2.40002 12.2541 1.90789 10.5 1.90789C8.74592 1.90789 7.02703 2.40002 5.53873 3.32832C4.05043 4.25662 2.85242 5.58386 2.08091 7.15915Z"
-                    fill="black"
-                    fill-opacity="0.6"
+              <div className="relative flex-grow w-full">
+                <label className={ `relative flex flex-grow w-full` }>
+                  <input
+                    type={ passwordVisibility ? "text" : "password" }
+                    name="password"
+                    value={ formData.password }
+                    onChange={ handleFormValueChange }
+                    className={ `h-10 w-full rounded-lg border px-3 py-3 text-gray-800 focus:outline-none ${passwordFocus && samePass ? "transition-[border] ease-in duration-[200ms] border-blue-400" : !samePass ? "transition-[border] ease-in duration-[500ms] border-red-600" : "border-gray-300"
+                      }` }
+                    onFocus={ () => handleFormFocus('passwordFocus') }
+                    onBlur={ () => handleFormBlur('passwordFocus') }
                   />
-                </svg>
-              </label>
+                  <span
+                    className={ `absolute left-2 top-2 text-opacity-80 transition-all ${passwordFocus || formData.password
+                      ? "top-[-12px] transition-all ease-in-out duration-[500ms] bg-white px-2 text-xs text-blue-400"
+                      : "text-base text-gray-600 text-opacity-80"
+                      }` }
+                  >
+                    Password
+                  </span>
+                  <ToggleIcon
+                    visibility={ passwordVisibility }
+                    onClick={ () => handlePasswordVisibility('passwordVisibility') }
+                  />
+                </label>
+                { !samePass ? <p className="text-[14px] text-red-600 flex flex-col mb-[-10px]"> Passwords do not match</p> : <div className="my-[10px]"></div> }
+              </div>
+
+              <div className="relative flex-grow w-full">
+
+                <label className={ `relative flex flex-grow w-full` }>
+                  <input
+                    type={ confirmPasswordVisibility ? "text" : "password" }
+                    name="confirmPassword"
+                    value={ formData.confirmPassword }
+                    onChange={ handleFormValueChange }
+                    className={ `h-10 w-full rounded-lg border px-3 py-3 text-gray-800 focus:outline-none ${confirmPasswordFocus && samePass ? "border-blue-400" : !samePass ? "border-red-600" : "border-gray-300"
+                      }` }
+                    onFocus={ () => handleFormFocus('confirmPasswordFocus') }
+                    onBlur={ () => handleFormBlur('confirmPasswordFocus') }
+                  />
+                  <span
+                    className={ `absolute left-2 top-2 text-opacity-80 transition-all ${confirmPasswordFocus || formData.confirmPassword
+                      ? "top-[-12px] transition-all ease-in-out duration-[500ms] bg-white px-2 text-xs text-blue-400"
+                      : "text-base text-gray-600 text-opacity-80"
+                      }` }
+                  >
+                    Confirm Password
+                  </span>
+                  <ToggleIcon
+                    visibility={ confirmPasswordVisibility }
+                    onClick={ () => handlePasswordVisibility('confirmPasswordVisibility') }
+                  />
+                </label>
+                { !samePass ? <p className="text-[14px] text-red-600 flex flex-col mb-[-10px]"> Passwords do not match</p> : <div className="my-[10px]"></div> }
+              </div>
             </div>
 
             <div className="flex-start flex">
-              <label className={ `relative mb-2 h-[100px] w-[610px] rounded-lg border ` }>
+              <label className={ `relative mb-2 h-[100px]  rounded-lg border  flex flex-grow w-full` }>
                 <textarea
                   type="text"
                   name="bio"
@@ -259,11 +250,11 @@ function SignUp () {
                 />
                 <span
                   className={ `absolute left-2 top-2 text-opacity-80 transition-all ${bioFocus || formData.bio
-                    ? "top-[-12px] bg-white px-2 text-xs text-blue-400"
+                    ? "top-[-12px] transition-all ease-in-out duration-[500ms] bg-white px-2 text-xs text-blue-400"
                     : "text-base text-gray-600 text-opacity-80 text['Hello']"
                     }` }
                 >
-                  { "\t Bio" }
+                  { "Bio" }
                 </span>
               </label>
 
@@ -271,13 +262,17 @@ function SignUp () {
           </form>
 
           <div className="ml-6 flex flex-col items-center">
-            <NavLink
-              to="/interest"
-              // onClick={ handleSubmit }
-              className="Helvetica-font leading-{23.838px} py-90 rounded-10 flex h-[50px] w-[500px] items-center justify-center gap-[5px]  rounded-md border bg-blue-500  px-10 font-sans text-[20px] font-bold  not-italic text-white"
+            <button
+              onClick={ handleSubmit }
             >
-              Next
-            </NavLink>
+
+              <NavLink
+                to={ formData.password === formData.confirmPassword ? "/interest" : "" }
+                className="Helvetica-font leading-{23.838px} py-90 rounded-10 flex h-[50px] w-[500px] items-center justify-center gap-[5px]  rounded-md border bg-blue-500  px-10 font-sans text-[20px] font-bold  not-italic text-white"
+              >
+                Next
+              </NavLink>
+            </button>
 
             <div className="flex-start mt-2 flex items-center">
               <div className="h-[1px] w-[274px] flex-grow bg-blue-500 bg-opacity-60"></div>

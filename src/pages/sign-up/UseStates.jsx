@@ -12,6 +12,7 @@ export const useCustomStates = () => {
     phoneNumberFocus: false,
     bioFocus: false,
     passwordVisibility: false,
+    confirmPasswordVisibility: false
   });
 
   const [ formData, setFormData ] = useState({
@@ -25,16 +26,20 @@ export const useCustomStates = () => {
     bio: "",
   });
 
+  const [ samePass, setSamePass ] = useState(true);
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (formData.password !== formData.confirmPassword) {
-      alert("Passwords do not match");
+    if (formData.password === formData.confirmPassword) {
+      setSamePass(true);
+      console.log("Form submitted with data:", formData);
       return;
     }
 
+    setSamePass(false);
     // You can send the form data to your server or perform other actions here
-    console.log("Form submitted with data:", formData);
+
   };
 
   const handleFormFocus = (inputNameValue) => {
@@ -57,10 +62,14 @@ export const useCustomStates = () => {
       ...prevData,
       [ name ]: value,
     }));
+    setSamePass(true);
   };
 
-  const handlePasswordVisibility = () => {
-    if (password === )
+  const handlePasswordVisibility = (field) => {
+    setInitialState((prevData) => ({
+      ...prevData,
+      [ field ]: !prevData[ field ],
+    }));
   };
 
 
@@ -75,10 +84,13 @@ export const useCustomStates = () => {
     phoneNumberFocus: initialState.phoneNumberFocus,
     bioFocus: initialState.bioFocus,
     passwordVisibility: initialState.passwordVisibility,
+    confirmPasswordVisibility: initialState.confirmPasswordVisibility,
+    samePass,
     formData,
     handleSubmit,
     handleFormFocus,
     handleFormBlur,
-    handleFormValueChange
+    handleFormValueChange,
+    handlePasswordVisibility
   };
 };

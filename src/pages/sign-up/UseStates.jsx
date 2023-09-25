@@ -11,6 +11,7 @@ export const useCustomStates = () => {
     confirmPasswordFocus: false,
     phoneNumberFocus: false,
     bioFocus: false,
+    passwordVisibility: false,
   });
 
   const [ formData, setFormData ] = useState({
@@ -58,6 +59,10 @@ export const useCustomStates = () => {
     }));
   };
 
+  const handlePasswordVisibility = () => {
+    if (password === )
+  };
+
 
 
   return {
@@ -69,6 +74,7 @@ export const useCustomStates = () => {
     confirmPasswordFocus: initialState.confirmPasswordFocus,
     phoneNumberFocus: initialState.phoneNumberFocus,
     bioFocus: initialState.bioFocus,
+    passwordVisibility: initialState.passwordVisibility,
     formData,
     handleSubmit,
     handleFormFocus,

@@ -1,100 +1,38 @@
-import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import Google from "../../assets/Google.png";
+import { useCustomStates } from "./UseStates.jsx";
+
 
 function SignUp () {
-  const [ firstNameFocus, setFirstNameFocus ] = useState(false);
-  const [ lastNameFocus, setLastNameFocus ] = useState(false);
-  const [ otherNameFocus, setOtherNameFocus ] = useState(false);
-  const [ emailFocus, setEmailFocus ] = useState(false);
-  const [ passwordFocus, setPasswordFocus ] = useState(false);
-  const [ confirmPasswordFocus, setConfirmPasswordFocus ] = useState(false);
-  const [ phoneNumberFocus, setPhoneNumberFocus ] = useState(false);
-  const [ bioFocus, setBio ] = useState(false);
-  // const [ lastName , setLastNameValue ] = useState('');
+  const {
+    firstNameFocus,
+    lastNameFocus,
+    otherNameFocus,
+    emailFocus,
+    passwordFocus,
+    confirmPasswordFocus,
+    phoneNumberFocus,
+    bioFocus,
+    formData,
+    handleSubmit,
+    handleFormFocus,
+    handleFormBlur,
+    handleFormValueChange
 
-  const [ formData, setFormData ] = useState({
-    firstName: "",
-    lastName: "",
-    otherName: "",
-    email: "",
-    phoneNumber: "",
-    password: "",
-    confirmPassword: "",
-    bio: "",
-  });
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (formData.password !== formData.confirmPassword) {
-      alert("Passwords do not match");
-      return;
-    }
-
-    // You can send the form data to your server or perform other actions here
-    console.log("Form submitted with data:", formData);
-  };
-
-  const handleFormFocus = (inputNameValue) => {
-    if (inputNameValue === 'firstName')
-      setFirstNameFocus(true);
-    else if (inputNameValue === 'lastName')
-      setLastNameFocus(true);
-    else if (inputNameValue === 'otherName')
-      setOtherNameFocus(true);
-    else if (inputNameValue === 'email')
-      setEmailFocus(true);
-    else if (inputNameValue === 'phoneNumber')
-      setPhoneNumberFocus(true);
-    else if (inputNameValue === 'password')
-      setPasswordFocus(true);
-    else if (inputNameValue === 'confirmPassword')
-      setConfirmPasswordFocus(true);
-    else if (inputNameValue === 'bio')
-      setBio(true);
-
-  };
-
-
-  const handleFormBlur = (inputNameValue) => {
-    if (inputNameValue === 'firstName')
-      setFirstNameFocus(false);
-    else if (inputNameValue === 'lastName')
-      setLastNameFocus(false);
-    else if (inputNameValue === 'otherName')
-      setOtherNameFocus(false);
-    else if (inputNameValue === 'email')
-      setEmailFocus(false);
-    else if (inputNameValue === 'phoneNumber')
-      setPhoneNumberFocus(false);
-    else if (inputNameValue === 'password')
-      setPasswordFocus(false);
-    else if (inputNameValue === 'confirmPassword')
-      setConfirmPasswordFocus(false);
-    else if (inputNameValue === 'bio')
-      setBio(false);
-  };
-
-
-  const handleFormValueChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [ name ]: value
-    }));
-  };
+  } = useCustomStates();
 
 
   return (
-    <div className="flex min-h-screen " >
-      <div className="relative w-1/2">
+    <div
+      onClick={ handleSubmit }
+      className="flex pr-4 flex-col md:flex-row max-h-screen bg-white" >
+      <div className="relative md:w-1/2 md:flex hidden">
         <img
           src="https://jahangirseven.com/socex/wp-content/uploads/sites/24/2020/04/scx03.png"
-          alt=""
-          className="h-cover max-w-full"
+          alt=" "
+          className="h-full max-w-screen"
         />
-        <h1 className="right-75 helvetica-font absolute bottom-[-40px]  left-1/2   z-10 ml-8 h-[280px] w-[75%] -translate-x-1/2 transform  font-sans text-[30px] font-bold leading-normal text-[#F6FBFF]">
+        <h1 className="right-75 helvetica-font absolute bottom-[0px]  left-1/2   z-10 ml-8 h-[280px] w-[75%] -translate-x-1/2 transform  font-sans text-[30px] font-bold leading-normal text-[white]">
           Discover, Learn and,
           <br />
           Build your skills
@@ -105,24 +43,24 @@ function SignUp () {
         </h1>
       </div>
 
-      <div className="gap-{20px}  max-h-full md:w-[50%] w-[50%] flex  items-start bg-white">
-        <div className="flex flex-col space-y-6 bg-white">
+      <div className="gap-{20px}  max-h-full  w-full md:w-[50%] ml-6 items-center justify-center bg-white">
+        <div className="flex flex-col space-y-6  bg-white">
           <h1 className="Roboto-font leading-{54.856px} custom-font-settings  text-black ml-6 mt-4 font-sans text-[40px] font-bold not-italic opacity-80">
             Welcome To Gig Intern
           </h1>
           <h2 className="Roboto-font leading-{27.428px} custom-font-settings text-black mb-4 ml-6 font-sans text-[20px] font-normal not-italic opacity-60">
             Create a profile and start building
           </h2>
-          <div className="ml-6 mt-4 h-[1px] w-[604px] flex-grow bg-gray-600"></div>
+          <div className="ml-6 mt-4 h-[1px] w-[98%] flex-grow bg-gray-600"></div>
 
           <div className="flex-start flex">
-            <div className="ml-6 h-[6px] w-[120px] flex-grow rounded-md bg-blue-400"></div>
-            <div className="ml-6 h-[6px] w-[120px] flex-grow rounded-md bg-gray-600"></div>
-            <div className="ml-6 h-[6px] w-[120px] flex-grow rounded-md bg-gray-600"></div>
-            <div className="ml-6 h-[6px] w-[120px] flex-grow rounded-md bg-gray-600"></div>
+            <hr className="ml-6 h-[6px] w-[75%] flex-grow rounded-md bg-blue-400" />
+            <hr className="ml-6 h-[6px] w-[75%] flex-grow rounded-md bg-gray-600" />
+            <hr className="ml-6 h-[6px] w-[75%] flex-grow rounded-md bg-gray-600" />
+            <hr className="ml-6 h-[6px] w-[75%] flex-grow rounded-md bg-gray-600" />
           </div>
 
-          <form onSubmit={ handleSubmit } className=" flex-col flex gap-[22px] ml-6">
+          <form onSubmit={ handleSubmit } className=" flex-col flex gap-[22px] ml-6 px-2">
             <div className="flex-start flex gap-[22px] ">
               <label className={ `relative` }>
                 <input
@@ -131,9 +69,9 @@ function SignUp () {
                   value={ formData.firstName }
                   onChange={ handleFormValueChange }
                   className={ `h-10 w-full rounded-lg border px-3 py-3 text-gray-800 focus:outline-none ${firstNameFocus ? "border-blue-400" : "border-gray-300"
-                    }` }
-                  onFocus={ () => handleFormFocus('firstName') }
-                  onBlur={ () => handleFormBlur('firstName') }
+                    } ` }
+                  onFocus={ () => handleFormFocus('firstNameFocus') }
+                  onBlur={ () => handleFormBlur('firstNameFocus') }
                 />
                 <span
                   className={ `absolute left-2 top-2 text-opacity-80 transition-all ${firstNameFocus || formData.firstName
@@ -153,8 +91,8 @@ function SignUp () {
                   onChange={ handleFormValueChange }
                   className={ `h-10 w-full rounded-lg border px-3 py-3 text-gray-800 focus:outline-none ${lastNameFocus ? "border-blue-400" : "border-gray-300"
                     }` }
-                  onFocus={ () => handleFormFocus('lastName') }
-                  onBlur={ () => handleFormBlur('lastName') }
+                  onFocus={ () => handleFormFocus('lastNameFocus') }
+                  onBlur={ () => handleFormBlur('lastNameFocus') }
                 />
                 <span
                   className={ `absolute left-2 top-2 text-opacity-80 transition-all ${lastNameFocus || formData.lastName
@@ -174,8 +112,8 @@ function SignUp () {
                   onChange={ handleFormValueChange }
                   className={ `h-10 w-full rounded-lg border px-3 py-3 text-gray-800 focus:outline-none ${lastNameFocus ? "border-blue-400" : "border-gray-300"
                     }` }
-                  onFocus={ () => handleFormFocus('otherName') }
-                  onBlur={ () => handleFormBlur('otherName') }
+                  onFocus={ () => handleFormFocus('otherNameFocus') }
+                  onBlur={ () => handleFormBlur('otherNameFocus') }
                 />
                 <span
                   className={ `absolute left-2 top-2 text-opacity-80 transition-all ${otherNameFocus || formData.otherName
@@ -188,8 +126,8 @@ function SignUp () {
               </label>
             </div>
 
-            <div className="flex-start flex gap-[22px] ">
-              <label className={ `relative` }>
+            <div className="flex-start flex gap-[22px] px-2 ">
+              <label className={ `relative w-full` }>
                 <input
                   type="email"
                   name="email"
@@ -197,8 +135,8 @@ function SignUp () {
                   onChange={ handleFormValueChange }
                   className={ `h-10 w-full rounded-lg border px-3 py-3 text-gray-800 focus:outline-none ${emailFocus ? "border-blue-400" : "border-gray-300"
                     }` }
-                  onFocus={ () => handleFormFocus('email') }
-                  onBlur={ () => handleFormBlur('email') }
+                  onFocus={ () => handleFormFocus('emailFocus') }
+                  onBlur={ () => handleFormBlur('emailFocus') }
                 />
                 <span
                   className={ `absolute left-2 top-2 text-opacity-80 transition-all ${emailFocus || formData.email
@@ -211,7 +149,7 @@ function SignUp () {
               </label>
 
 
-              <label className={ `relative` }>
+              <label className={ `relative w-full` }>
                 <input
                   type="number"
                   name="phoneNumber"
@@ -219,8 +157,8 @@ function SignUp () {
                   onChange={ handleFormValueChange }
                   className={ `h-10 w-full rounded-lg border px-3 py-3 text-gray-800 focus:outline-none ${phoneNumberFocus ? "border-blue-400" : "border-gray-300"
                     }` }
-                  onFocus={ () => handleFormFocus('phoneNumber') }
-                  onBlur={ () => handleFormBlur('phoneNumber') }
+                  onFocus={ () => handleFormFocus('phoneNumberFocus') }
+                  onBlur={ () => handleFormBlur('phoneNumberFocus') }
                 />
                 <span
                   className={ `absolute left-2 top-2 text-opacity-80 transition-all ${phoneNumberFocus || formData.phoneNumber
@@ -242,8 +180,8 @@ function SignUp () {
                   onChange={ handleFormValueChange }
                   className={ `h-10 w-full rounded-lg border px-3 py-3 text-gray-800 focus:outline-none ${passwordFocus ? "border-blue-400" : "border-gray-300"
                     }` }
-                  onFocus={ () => handleFormFocus('password') }
-                  onBlur={ () => handleFormBlur('password') }
+                  onFocus={ () => handleFormFocus('passwordFocus') }
+                  onBlur={ () => handleFormBlur('passwordFocus') }
                 />
                 <span
                   className={ `absolute left-2 top-2 text-opacity-80 transition-all ${passwordFocus || formData.password
@@ -278,8 +216,8 @@ function SignUp () {
                   onChange={ handleFormValueChange }
                   className={ `h-10 w-full rounded-lg border px-3 py-3 text-gray-800 focus:outline-none ${confirmPasswordFocus ? "border-blue-400" : "border-gray-300"
                     }` }
-                  onFocus={ () => handleFormFocus('confirmPassword') }
-                  onBlur={ () => handleFormBlur('confirmPassword') }
+                  onFocus={ () => handleFormFocus('confirmPasswordFocus') }
+                  onBlur={ () => handleFormBlur('confirmPasswordFocus') }
                 />
                 <span
                   className={ `absolute left-2 top-2 text-opacity-80 transition-all ${confirmPasswordFocus || formData.confirmPassword
@@ -307,7 +245,7 @@ function SignUp () {
             </div>
 
             <div className="flex-start flex">
-              <label className={ `relative mb-4 h-[124px] w-[610px] rounded-lg border ` }>
+              <label className={ `relative mb-2 h-[100px] w-[610px] rounded-lg border ` }>
                 <textarea
                   type="text"
                   name="bio"
@@ -316,8 +254,8 @@ function SignUp () {
                   onChange={ handleFormValueChange }
                   className={ `h-full w-full rounded-lg border px-3 py-3 text-gray-800 focus:outline-none ${bioFocus ? "border-blue-400" : "border-gray-300"
                     }` }
-                  onFocus={ () => handleFormFocus('bio') }
-                  onBlur={ () => handleFormBlur('bio') }
+                  onFocus={ () => handleFormFocus('bioFocus') }
+                  onBlur={ () => handleFormBlur('bioFocus') }
                 />
                 <span
                   className={ `absolute left-2 top-2 text-opacity-80 transition-all ${bioFocus || formData.bio
@@ -332,26 +270,26 @@ function SignUp () {
             </div>
           </form>
 
-          <div className="ml-6 flex flex-col">
+          <div className="ml-6 flex flex-col items-center">
             <NavLink
               to="/interest"
               // onClick={ handleSubmit }
-              className="Helvetica-font leading-{23.838px} py-90 rounded-10 flex h-[60px] w-[580px] items-center justify-center gap-[10px]  rounded-md border bg-blue-500  px-10 font-sans text-[20px] font-bold  not-italic text-[#F6FBFF] "
+              className="Helvetica-font leading-{23.838px} py-90 rounded-10 flex h-[50px] w-[500px] items-center justify-center gap-[5px]  rounded-md border bg-blue-500  px-10 font-sans text-[20px] font-bold  not-italic text-white"
             >
               Next
             </NavLink>
 
-            <div className="flex-start mt-4 flex items-center">
+            <div className="flex-start mt-2 flex items-center">
               <div className="h-[1px] w-[274px] flex-grow bg-blue-500 bg-opacity-60"></div>
-              <h2 className="Roboto-font leading-{19.2px} text-black font-sans text-[14px] font-bold not-italic opacity-80 ">
+              <h2 className="p-1 Roboto-font leading-{19.2px} text-gray-900 font-sans text-[14px] bg-white font-black not-italic opacity-80 ">
                 OR
               </h2>
               <div className="h-[1px] w-[274px] flex-grow bg-blue-500 bg-opacity-60"></div>
             </div>
 
-            <button className="py-90 rounded-10 mt-4 flex  h-[60px] w-[580px] items-center justify-center  gap-[10px] rounded-md border   border-blue-500 px-10">
-              <img className="h-[20px] w-[22.875px]" src={ Google } alt="" />
-              <h1 className="Roboto-font leading-{19.2px} text-black mb-16 mt-14 font-sans text-[12px] font-normal not-italic opacity-60">
+            <button className="py-90 rounded-10 my-4 flex  h-[40px] w-[500px] items-center justify-center  gap-[10px] rounded-md border   border-blue-500 px-10">
+              <img className="h-[20px] w-[20px]" src={ Google } alt="" />
+              <h1 className="Roboto-font justify-center items-center leading-{19.2px} text-gray-900 mb-14 mt-14 font-sans text-[12px] font-bold not-italic opacity-60">
                 continue with Google
               </h1>
             </button>
@@ -360,6 +298,6 @@ function SignUp () {
       </div >
     </div >
   );
-}
+};
 
 export default SignUp;

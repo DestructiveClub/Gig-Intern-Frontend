@@ -3,13 +3,14 @@ import { NavLink } from "react-router-dom";
 import Google from "../../assets/Google.png";
 import unsplash from "../../assets/unsplash.png";
 import Vector from "../../assets/Vector.png";
+import { Card, Input, Menu, ButtonGroup } from "@material-tailwind/react";
 
 
 const InterestPage = () => {
   return (
-    <div className="flex min-h-screen overflow-y-hidden">
-      <div className="relative w-1/2 ">
-        <img src={unsplash} alt="" className="h-full max-w-full" />
+    <div className="flex pr-4 flex-col md:flex-row max-w-screen max-h-screen bg-white">
+      <div className="relative  md:w-1/2 md:flex hidden px-0">
+        <img src={ unsplash } alt="" className="w-full max-w-screen" />
         <h1 className=" right-75 bottom-68 helvetica-font absolute left-1/2 top-1/2 z-10 ml-8 h-[280px] w-[75%] -translate-x-1/2 transform font-sans text-[30px] font-bold leading-normal text-[#F6FBFF]">
           Discover, Learn and,
           <br />
@@ -23,13 +24,16 @@ const InterestPage = () => {
 
       <div className="gap-{30px} flex w-1/2 flex-col items-start  bg-white">
         <div className="flex flex-col space-y-6 ">
-          <NavLink to="/signup">
-            <img className="absolute ml-6" src={Vector} alt="" />
-          </NavLink>
+          <div className="relative  flex gap-2">
 
-          <h1 className="Roboto-font leading-{54.856px} custom-font-settings  text-black ml-6 mt-4 font-sans text-[40px] font-bold not-italic opacity-80">
-            Welcome To Gig Intern
-          </h1>
+            <NavLink to="/signup">
+              <img className="absolute ml-6 w-5 h-5" src={ Vector } alt="" />
+            </NavLink>
+
+            <h1 className="Roboto-font leading-{54.856px} custom-font-settings  text-black ml-6 mt-4 font-sans text-[40px] font-bold not-italic opacity-80">
+              Welcome To Gig Intern
+            </h1>
+          </div>
           <h2 className="Roboto-font leading-{27.428px} custom-font-settings text-black ml-6 mt-4 font-sans text-[20px] font-normal not-italic opacity-60">
             Select your roles and interests
           </h2>
@@ -51,10 +55,12 @@ const InterestPage = () => {
                 Select your role
               </label>
               <input
-                type="text"
+                type="dropdown"
+                color="blue"
                 placeholder="FullStack Web Developer"
                 className="Roboto-font ml-6 mt-6 flex text-center font-sans text-[14px] font-normal text-[#D9D9D9] outline-none"
               />
+
             </div>
 
             <h1 className="Helvetica-font custom-font-settings text-black leading-{41.142px} font-sans text-[30px] font-bold not-italic opacity-80">
@@ -64,11 +70,11 @@ const InterestPage = () => {
 
           <form className="ml-6">
             <div className="flex-start flex flex-shrink-0 gap-[10px]">
-              <div className=" mb-4  h-[38px] w-[187px] rounded-lg border border-blue-500 border-opacity-60 bg-white">
-                <text className="font-sf-pro-text  ml-4 text-[15px] font-medium not-italic  text-[#1F5EFF] ">
+              <Card color="blue" className=" mb-4  h-[38px] w-[187px] rounded-lg border border-blue-500 border-opacity-60 bg-white">
+                <text className="text-center absolute font-sf-pro-text  ml-4 text-[15px] font-medium not-italic  text-[#1F5EFF] ">
                   FrontEnd Development
                 </text>
-              </div>
+              </Card>
 
               <div className=" mb-4  h-[38px] w-[187px] rounded-lg border border-blue-500 border-opacity-60 bg-white">
                 <text className="font-sf-pro-text ml-4 text-[15px] font-medium not-italic  text-[#1F5EFF] ">
@@ -165,29 +171,28 @@ const InterestPage = () => {
           </form>
 
           <div className="ml-6 flex flex-col items-center">
-            <div className="py-90 rounded-10 flex  h-[60px] w-[580px] items-center  justify-center gap-[10px] rounded-md border  bg-[#1F5EFF] px-10">
-              <NavLink
-                to="/courses"
-                className="Helvetica-font leading-{23.838px} font-sans text-[20px] font-bold not-italic text-[#F6FBFF] "
-              >
-                Next
-              </NavLink>
-            </div>
+            <NavLink
+              to="/courses"
+              // onClick={ handleSubmit }
+              className="Helvetica-font leading-{23.838px} py-90 rounded-10 flex h-[50px] w-[500px] items-center justify-center gap-[5px]  rounded-md border bg-blue-500  px-10 font-sans text-[20px] font-bold  not-italic text-white"
+            >
+              Next
+            </NavLink>
 
-            <div className="flex-start mt-4 flex items-center">
-              <div className="h-[1px] w-[274px] flex-grow bg-[#29ABFF] bg-opacity-60"></div>
-              <h2 className="Roboto-font leading-{19.2px} text-black font-sans text-[14px] font-bold font-normal not-italic opacity-80 ">
+            <div className="flex-start mt-2 flex items-center">
+              <div className="h-[1px] w-[274px] flex-grow bg-blue-500 bg-opacity-60"></div>
+              <h2 className="p-1 Roboto-font leading-{19.2px} text-gray-900 font-sans text-[14px] bg-white font-black not-italic opacity-80 ">
                 OR
               </h2>
-              <div className="h-[1px] w-[274px] flex-grow bg-[#29ABFF] bg-opacity-60"></div>
+              <div className="h-[1px] w-[274px] flex-grow bg-blue-500 bg-opacity-60"></div>
             </div>
 
-            <div className="py-90 rounded-10 mt-4 flex flex h-[60px] w-[580px] items-center justify-center justify-center  gap-[10px] rounded-md border   border-blue-500 px-10">
-              <img className="h-[22.875px] w-[22.875px]" src={Google} alt="" />
-              <h1 className="Roboto-font leading-{19.2px} text-black mb-16 mt-14 font-sans text-[14px] font-normal not-italic opacity-60">
+            <button className="py-90 rounded-10 my-4 flex  h-[40px] w-[500px] items-center justify-center  gap-[10px] rounded-md border   border-blue-500 px-10">
+              <img className="h-[20px] w-[20px]" src={ Google } alt="" />
+              <h1 className="Roboto-font justify-center items-center leading-{19.2px} text-gray-900 mb-14 mt-14 font-sans text-[12px] font-bold not-italic opacity-60">
                 continue with Google
               </h1>
-            </div>
+            </button>
           </div>
         </div>
       </div>

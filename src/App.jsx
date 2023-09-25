@@ -11,13 +11,13 @@ import SignIn from "pages/sign-in/SignIn";
 const App = () => {
   return (
     <Routes>
-      <Route path="admin/*" element={<AdminLayout />} />
-      <Route path="/" element={<Navigate to="/admin" replace />} />
-      <Route path="signup/*" element={<SignUp />} />
-      <Route path="signin/*" element={<SignIn />} />
-      <Route path="/interest/*" element={<InterestPage />} />
-      <Route path="/courses/*" element={<Courses />} />
-      <Route path="/termsandconditions/*" element={<TermsCondition />} />
+      <Route path="admin/*" element={ <AdminLayout /> } />
+      <Route path="signup/*" element={ <SignUp /> } />
+      <Route path="/" element={ <Navigate to="/signup" replace /> } />
+      <Route path="signin/*" element={ <SignIn /> } />
+      <Route path="/interest/*" element={ <InterestPage /> } />
+      <Route path="/courses/*" element={ <Courses /> } />
+      <Route path="/termsandconditions/*" element={ <TermsCondition /> } />
     </Routes>
   );
 };

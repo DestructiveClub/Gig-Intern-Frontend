@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const useCustomStates = () => {
 
@@ -28,17 +29,18 @@ export const useCustomStates = () => {
 
   const [ samePass, setSamePass ] = useState(true);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+/* This handles button clicks to the Next page */
+  const navigate = useNavigate();
+
+  const handleNavigate = (link) => {
 
     if (formData.password === formData.confirmPassword) {
       setSamePass(true);
       console.log("Form submitted with data:", formData);
+      navigate.push(`${link}`);
       return;
     }
-
     setSamePass(false);
-    // You can send the form data to your server or perform other actions here
 
   };
 
@@ -64,35 +66,35 @@ export const useCustomStates = () => {
       [ name ]: updatedValue,
     }));
     // console.log(name, value)
-  setSamePass(true);
-};
+    setSamePass(true);
+  };
 
-const handlePasswordVisibility = (field) => {
-  setInitialState((prevData) => ({
-    ...prevData,
-    [ field ]: !prevData[ field ],
-  }));
-};
+  const handlePasswordVisibility = (field) => {
+    setInitialState((prevData) => ({
+      ...prevData,
+      [ field ]: !prevData[ field ],
+    }));
+  };
 
 
 
-return {
-  firstNameFocus: initialState.firstNameFocus,
-  lastNameFocus: initialState.lastNameFocus,
-  otherNameFocus: initialState.otherNameFocus,
-  emailFocus: initialState.emailFocus,
-  passwordFocus: initialState.passwordFocus,
-  confirmPasswordFocus: initialState.confirmPasswordFocus,
-  phoneNumberFocus: initialState.phoneNumberFocus,
-  bioFocus: initialState.bioFocus,
-  passwordVisibility: initialState.passwordVisibility,
-  confirmPasswordVisibility: initialState.confirmPasswordVisibility,
-  samePass,
-  formData,
-  handleSubmit,
-  handleFormFocus,
-  handleFormBlur,
-  handleFormValueChange,
-  handlePasswordVisibility
-};
+  return {
+    firstNameFocus: initialState.firstNameFocus,
+    lastNameFocus: initialState.lastNameFocus,
+    otherNameFocus: initialState.otherNameFocus,
+    emailFocus: initialState.emailFocus,
+    passwordFocus: initialState.passwordFocus,
+    confirmPasswordFocus: initialState.confirmPasswordFocus,
+    phoneNumberFocus: initialState.phoneNumberFocus,
+    bioFocus: initialState.bioFocus,
+    passwordVisibility: initialState.passwordVisibility,
+    confirmPasswordVisibility: initialState.confirmPasswordVisibility,
+    samePass,
+    formData,
+    handleNavigate,
+    handleFormFocus,
+    handleFormBlur,
+    handleFormValueChange,
+    handlePasswordVisibility
+  };
 };

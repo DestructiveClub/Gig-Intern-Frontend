@@ -14,7 +14,8 @@ const Input = ({
   inputField,
   authPass,
   placeholder,
-  required
+  required,
+  className,
 }) => {
   // const { handleFormValueChange } = useCustomStates();
   const [ boolValue, setBoolValue ] = useState(false);
@@ -70,7 +71,7 @@ const Input = ({
             onChange={ handleInputChange }
             placeholder={ !boolValue ? placeholder : "" }
             required={ required }
-            className={ `h-full w-full rounded-lg border px-3 py-3 text-gray-800 focus:outline-none ${borderClass}` }
+            className={ `h-full w-full rounded-lg border px-3 py-3 text-gray-800 focus:outline-none ${className} ${borderClass}` }
             onFocus={ handleFocus }
             onBlur={ handleBlur }
           /> :
@@ -81,7 +82,7 @@ const Input = ({
             onChange={ handleInputChange }
             placeholder={ !boolValue ? placeholder : "" }
             required={ required }
-            className={ `h-10 w-full rounded-lg border px-3 py-3 text-gray-800 focus:outline-none ${borderClass}` }
+            className={ ` h-10 w-full rounded-lg border px-3 py-3 text-gray-800 focus:outline-none ${className} ${borderClass}` }
             onFocus={ handleFocus }
             onBlur={ handleBlur }
           />
@@ -90,7 +91,7 @@ const Input = ({
         <span
           className={ `absolute left-2 top-2 text-opacity-80 transition-all ${boolValue || value
             ? 'top-[-8px] transition-all ease-in-out duration-[500ms] bg-white px-2 text-xs text-blue-400'
-            : 'text-base text-gray-600 text-opacity-80'
+            : `text-base text-gray-600 text-opacity-80 ${className}`
             }` }
         >
           { inputField }
@@ -102,8 +103,8 @@ const Input = ({
         }
       </label>
     </>
-  )
-}
+  );
+};
 
 
 

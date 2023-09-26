@@ -1,16 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import Google from "../../assets/Google.png";
 import unsplash from "../../assets/unsplash.png";
 import Vector from "../../assets/Vector.png";
+import Card from "components/card/CardButton";
 
 
 const InterestPage = () => {
 
+  // Define a state to manage the selected interests
+  const [ selectedInterests, setSelectedInterests ] = useState([]);
+
+  // Define a function to handle the click event on a card
+  const handleCardClick = (interest) => {
+    if (selectedInterests.includes(interest)) {
+      setSelectedInterests(selectedInterests.filter((item) => item !== interest));
+    } else {
+      // If it's not selected, add it to the list
+      setSelectedInterests([ ...selectedInterests, interest ]);
+    }
+  };
+
+  // List of interests
+  const interestsList = [
+    "FrontEnd Development",
+    "BackEnd Development",
+    "FullStack Development",
+    "Mobile development",
+    "Project Manager",
+    "Team Lead",
+    "Machine Learning",
+    "Data Analysis",
+  ];
 
   return (
-    <div className="flex pr-4 flex-col md:flex-row max-w-screen max-h-screen bg-white">
-      <div className="relative  md:w-1/2 md:flex hidden px-0">
+    <div className="flex flex-col max-h-screen pr-4 bg-white md:flex-row max-w-screen">
+      <div className="relative hidden px-0 md:w-1/2 md:flex">
         <img src={ unsplash } alt="" className="w-full max-w-screen" />
         <h1 className=" right-75 bottom-68 helvetica-font absolute left-1/2 top-1/2 z-10 ml-8 h-[280px] w-[75%] -translate-x-1/2 transform font-sans text-[30px] font-bold leading-normal text-[#F6FBFF]">
           Discover, Learn and,
@@ -25,10 +50,10 @@ const InterestPage = () => {
 
       <div className="gap-{30px} flex w-1/2 flex-col items-start  bg-white">
         <div className="flex flex-col space-y-6 ">
-          <div className="relative  flex gap-2">
+          <div className="relative flex gap-2">
 
             <NavLink to="/signup">
-              <img className="absolute ml-6 w-5 h-5" src={ Vector } alt="" />
+              <img className="absolute w-5 h-5 ml-6" src={ Vector } alt="" />
             </NavLink>
 
             <h1 className="Roboto-font leading-{54.856px} custom-font-settings  text-black ml-6 mt-4 font-sans text-[40px] font-bold not-italic opacity-80">
@@ -38,13 +63,13 @@ const InterestPage = () => {
           <h2 className="Roboto-font leading-{27.428px} custom-font-settings text-black ml-6 mt-4 font-sans text-[20px] font-normal not-italic opacity-60">
             Select your roles and interests
           </h2>
-          <div className="ml-6 h-[1px] w-[580px] flex-grow bg-[#D9D9D9]"></div>
+          <div className="ml-6 h-[1px] w-[70%] flex-grow bg-[#D9D9D9]"></div>
 
-          <div className="flex-start flex">
-            <div className="ml-6 h-[6px] w-[120px] flex-grow rounded-md bg-blue-400"></div>
-            <div className="ml-6 h-[6px] w-[120px] flex-grow rounded-md bg-blue-400"></div>
-            <div className="ml-6 h-[6px] w-[120px] flex-grow rounded-md bg-gray-600"></div>
-            <div className="ml-6 h-[6px] w-[120px] flex-grow rounded-md bg-gray-600"></div>
+          <div className="flex flex-start">
+            <div className="ml-6 h-[6px] w-[70%] flex-grow rounded-md bg-blue-400"></div>
+            <div className="ml-6 h-[6px] w-[70%] flex-grow rounded-md bg-blue-400"></div>
+            <div className="ml-6 h-[6px] w-[70%] flex-grow rounded-md bg-gray-600"></div>
+            <div className="ml-6 h-[6px] w-[70%] flex-grow rounded-md bg-gray-600"></div>
           </div>
 
           <div className="ml-6">
@@ -71,20 +96,31 @@ const InterestPage = () => {
 
           <form className="ml-6">
             <div className="flex-start flex flex-shrink-0 gap-[10px]">
+              { interestsList.map((interest) => (
+
+                <Card
+                  key={ interest }
+                  interest={ interest }
+                  onClick={ handleCardClick }
+                />
+              ))
+              }
+            </div>
+            <div className="flex-start flex flex-shrink-0 gap-[10px]">
               <div color="blue" className=" mb-4  h-[38px] w-[187px] rounded-lg border border-blue-500 border-opacity-60 bg-white">
-                <text className="text-center absolute font-sf-pro-text  ml-4 text-[15px] font-medium not-italic  text-[#1F5EFF] ">
+                <text className="text-center absolute font-sf-pro-text  ml-4 text-[15px] font-medium not-italic  text-blue-500 ">
                   FrontEnd Development
                 </text>
               </div>
 
               <div className=" mb-4  h-[38px] w-[187px] rounded-lg border border-blue-500 border-opacity-60 bg-white">
-                <text className="font-sf-pro-text ml-4 text-[15px] font-medium not-italic  text-[#1F5EFF] ">
+                <text className="font-sf-pro-text ml-4 text-[15px] font-medium not-italic  text-blue-500">
                   BackEnd Development
                 </text>
               </div>
 
               <div className=" mb-4  h-[38px] w-[187px] rounded-lg border border-blue-500 border-opacity-60 bg-white">
-                <text className="font-sf-pro-text ml-4 text-[15px] font-medium not-italic  text-[#1F5EFF] ">
+                <text className="font-sf-pro-text ml-4 text-[15px] font-medium not-italic  text-blue-500 ">
                   FullStack Development
                 </text>
               </div>
@@ -92,19 +128,19 @@ const InterestPage = () => {
 
             <div className="flex-start flex gap-[10px] ">
               <div className=" mb-4  h-[38px] w-[187px] rounded-lg border border-blue-500 border-opacity-60 bg-white">
-                <text className="font-sf-pro-text ml-4 text-[15px] font-medium not-italic  text-[#1F5EFF] ">
+                <text className="font-sf-pro-text ml-4 text-[15px] font-medium not-italic  text-blue-500 ">
                   Product Management
                 </text>
               </div>
 
               <div className=" mb-4  h-[38px] w-[187px] rounded-lg border border-blue-500 border-opacity-60 bg-white">
-                <text className="font-sf-pro-text ml-4 text-[15px] font-medium not-italic  text-[#1F5EFF] ">
+                <text className="font-sf-pro-text ml-4 text-[15px] font-medium not-italic  text-blue-500 ">
                   Product Design
                 </text>
               </div>
 
               <div className=" mb-4  h-[38px] w-[187px] rounded-lg border border-blue-500 border-opacity-60 bg-white">
-                <text className="font-sf-pro-text ml-4 text-[15px] font-medium not-italic  text-[#1F5EFF] ">
+                <text className="font-sf-pro-text ml-4 text-[15px] font-medium not-italic  text-blue-500 ">
                   UI/UX Design
                 </text>
               </div>
@@ -112,19 +148,19 @@ const InterestPage = () => {
 
             <div className="flex-start flex gap-[10px]">
               <div className=" mb-4  h-[38px] w-[187px] rounded-lg border border-blue-500 border-opacity-60 bg-white">
-                <text className="font-sf-pro-text ml-4 text-[15px] font-medium not-italic  text-[#1F5EFF] ">
+                <text className="font-sf-pro-text ml-4 text-[15px] font-medium not-italic  text-blue-500 ">
                   Content Marketing
                 </text>
               </div>
 
               <div className=" mb-4  h-[38px] w-[187px] rounded-lg border border-blue-500 border-opacity-60 bg-white">
-                <text className="font-sf-pro-text ml-4 text-[15px] font-medium not-italic  text-[#1F5EFF] ">
+                <text className="font-sf-pro-text ml-4 text-[15px] font-medium not-italic  text-blue-500 ">
                   Motion Designer
                 </text>
               </div>
 
               <div className=" mb-4  h-[38px] w-[187px] rounded-lg border border-blue-500 border-opacity-60 bg-white">
-                <text className="font-sf-pro-text ml-4 text-[15px] font-medium not-italic  text-[#1F5EFF] ">
+                <text className="font-sf-pro-text ml-4 text-[15px] font-medium not-italic  text-blue-500 ">
                   Copy-Writing
                 </text>
               </div>
@@ -132,19 +168,19 @@ const InterestPage = () => {
 
             <div className="flex-start flex gap-[10px]">
               <div className=" mb-4  h-[38px] w-[187px] rounded-lg border border-blue-500 border-opacity-60 bg-white">
-                <text className="font-sf-pro-text ml-4 text-[15px] font-medium not-italic  text-[#1F5EFF] ">
+                <text className="font-sf-pro-text ml-4 text-[15px] font-medium not-italic  text-blue-500 ">
                   Podcast Management
                 </text>
               </div>
 
               <div className=" mb-4  h-[38px] w-[187px] rounded-lg border border-blue-500 border-opacity-60 bg-white">
-                <text className="font-sf-pro-text ml-4 text-[15px] font-medium not-italic  text-[#1F5EFF] ">
+                <text className="font-sf-pro-text ml-4 text-[15px] font-medium not-italic  text-blue-500 ">
                   Mobile App Dev
                 </text>
               </div>
 
               <div className=" mb-4  h-[38px] w-[187px] rounded-lg border border-blue-500 border-opacity-60 bg-white">
-                <text className="font-sf-pro-text ml-4 text-[15px] font-medium not-italic  text-[#1F5EFF] ">
+                <text className="font-sf-pro-text ml-4 text-[15px] font-medium not-italic  text-blue-500 ">
                   Software Development
                 </text>
               </div>
@@ -152,26 +188,26 @@ const InterestPage = () => {
 
             <div className="flex-start flex gap-[10px]">
               <div className=" mb-4  h-[38px] w-[187px] rounded-lg border border-blue-500 border-opacity-60 bg-white">
-                <text className="font-sf-pro-text ml-4 text-[15px] font-medium not-italic  text-[#1F5EFF] ">
+                <text className="font-sf-pro-text ml-4 text-[15px] font-medium not-italic  text-blue-500 ">
                   Cyber Security
                 </text>
               </div>
 
               <div className=" mb-4  h-[38px] w-[187px] rounded-lg border border-blue-500 border-opacity-60 bg-white">
-                <text className="font-sf-pro-text ml-4 text-[15px] font-medium not-italic  text-[#1F5EFF] ">
+                <text className="font-sf-pro-text ml-4 text-[15px] font-medium not-italic  text-blue-500 ">
                   Mobile App Dev
                 </text>
               </div>
 
               <div className=" mb-4  h-[38px] w-[187px] rounded-lg border border-blue-500 border-opacity-60 bg-white">
-                <text className="font-sf-pro-text ml-4 text-[15px] font-medium not-italic  text-[#1F5EFF] ">
+                <text className="font-sf-pro-text ml-4 text-[15px] font-medium not-italic  text-blue-500">
                   Public Relations
                 </text>
               </div>
             </div>
           </form>
 
-          <div className="ml-6 flex flex-col items-center">
+          <div className="flex flex-col items-center ml-6">
             <NavLink
               to="/courses"
               // onClick={ handleSubmit }
@@ -180,7 +216,7 @@ const InterestPage = () => {
               Next
             </NavLink>
 
-            <div className="flex-start mt-2 flex items-center">
+            <div className="flex items-center mt-2 flex-start">
               <div className="h-[1px] w-[274px] flex-grow bg-blue-500 bg-opacity-60"></div>
               <h2 className="p-1 Roboto-font leading-{19.2px} text-gray-900 font-sans text-[14px] bg-white font-black not-italic opacity-80 ">
                 OR

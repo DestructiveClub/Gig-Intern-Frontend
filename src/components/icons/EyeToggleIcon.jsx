@@ -4,8 +4,8 @@ import React from "react";
 const ToggleIcon = ({ visibility, onClick }) => {
   return (
     <div
-      onClick={onClick}
-      className="absolute right-0 top-0 mr-2 mt-2 cursor-pointer"
+      onClick={ onClick }
+      className="absolute top-0 right-0 mt-2 mr-2 cursor-pointer"
     >
       { visibility ? (
         <svg
@@ -14,7 +14,7 @@ const ToggleIcon = ({ visibility, onClick }) => {
           viewBox="0 0 24 24"
           strokeWidth={ 1.5 }
           stroke="currentColor"
-          className="w-5 h-5 text-gray-600"
+          className="w-4 h-4 text-gray-600 sm:w-5 sm:h-5"
         >
           <path
             strokeLinecap="round"
@@ -29,7 +29,7 @@ const ToggleIcon = ({ visibility, onClick }) => {
           viewBox="0 0 24 24"
           strokeWidth={ 1.5 }
           stroke="currentColor"
-          className="w-5 h-5 text-gray-600"
+          className="w-4 h-4 text-gray-600 sm:w-5 sm:h-5"
         >
           <path
             strokeLinecap="round"

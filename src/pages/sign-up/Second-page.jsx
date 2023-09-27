@@ -19,6 +19,7 @@ const InterestPage = () => {
       // If it's not selected, add it to the list
       setSelectedInterests([ ...selectedInterests, interest ]);
     }
+    console.log(selectedInterests);
   };
 
   // List of interests

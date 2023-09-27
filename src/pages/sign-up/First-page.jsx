@@ -1,5 +1,7 @@
 import Google from "../../assets/Google.png";
 import { useCustomStates } from "../../components/UseStates.jsx";
+import sideImg from "../../assets/sign.png";
+
 import Input from "components/fields/Input";
 
 
@@ -11,23 +13,15 @@ function SignUp () {
     handleFormValueChange
   } = useCustomStates();
 
-
-  // const handleNextClick = () => {
-  //   if ((formData.password === formData.confirmPassword)) {
-  //     // Navigate to the "/interest" route programmatically
-  //   } else {
-  //     // Handle form validation errors (e.g., display an error message)
-  //   }
-  // };
-  const classStyle = "sm:text-base text-sm";
+  const classStyle = "sm:text-base text-xs";
 
   return (
     <div
-      className="flex flex-row max-h-screen bg-white" >
+      className="flex flex-row max-h-full bg-white" >
       <div className="relative hidden md:w-1/2 md:flex md:max-h-screen md:object-cover ">
         <div>
 
-          <h1 className="right-75 helvetica-font absolute bottom-[0px]  left-1/2 z-10 ml-8 h-[280px] w-[75%] -translate-x-1/2 transform  font-sans text-[30px] font-bold leading-normal text-[white]">
+          <h1 className="right-75 helvetica-font absolute bottom-[0px] left-1/2 z-10 ml-8 h-[280px] w-[75%] -translate-x-1/2 transform  font-sans text-[30px] font-bold leading-normal text-[white]">
             Discover, Learn and,
             <br />
             Build your skills
@@ -38,15 +32,15 @@ function SignUp () {
           </h1>
         </div>
         <img
-          src="https://jahangirseven.com/socex/wp-content/uploads/sites/24/2020/04/scx03.png"
+          src={ sideImg }
           alt=" "
-          className="object-cover h-screen max-w-full mix-blend-darken"
+          className="object-cover w-full h-full max-w-full"
         />
       </div>
 
-      <div className="items-center justify-center w-full mx-3 bg-white md:h-full md:w-1/2 sm:mx-6 md:mx-3">
+      <div className="flex items-center content-center justify-center w-full max-h-full mx-3 bg-white md:h-full md:w-1/2 sm:mx-6 md:mx-3">
         <div className="flex flex-col w-full space-y-6 bg-white">
-          <h1 className="mt-4 ml-6 font-sans text-2xl not-italic font-bold text-black Roboto-font sm:text-4xl custom-font-settings opacity-80">
+          <h1 className="mt-4 ml-6 font-sans text-2xl not-italic font-bold text-black md:text-2xl Roboto-font sm:text-4xl custom-font-settings opacity-80">
             Welcome To Gig Intern
           </h1>
           <h2 className="Roboto-font  sm:text-xl leading-{27.428px} custom-font-settings text-black  ml-6 font-sans text-md font-normal not-italic opacity-60">
@@ -66,7 +60,6 @@ function SignUp () {
               <Input
                 type="text"
                 name="firstName"
-                formData={ formData }
                 value={ formData.firstName }
                 onChange={ handleFormValueChange }
                 inputField="First Name"
@@ -75,7 +68,6 @@ function SignUp () {
               <Input
                 type="text"
                 name="lastName"
-                formData={ formData }
                 value={ formData.lastName }
                 onChange={ handleFormValueChange }
                 inputField="Last Name"

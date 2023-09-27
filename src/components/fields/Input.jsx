@@ -47,7 +47,7 @@ const Input = ({
 
   // Determine the border class based on "authPass" and "focus" props
   const borderClass =
-    type === "password" ?
+    type === "password" && authPass !== undefined ?
       (boolValue && authPass
         ? 'transition-[border] ease-in duration-[200ms] border-blue-400'
         : !authPass
@@ -90,7 +90,7 @@ const Input = ({
         }
         <span
           className={ `absolute left-2 top-2 text-opacity-80 transition-all ${boolValue || value
-            ? 'top-[-8px] transition-all ease-in-out duration-[500ms] bg-white px-2 text-xs text-blue-400'
+            ? 'top-[-8px] transition-all ease-in-out duration-[500ms] bg-white px-2 sm:text-xs md: text-[10px] text-blue-400'
             : `text-base text-gray-600 text-opacity-80 ${className}`
             }` }
         >

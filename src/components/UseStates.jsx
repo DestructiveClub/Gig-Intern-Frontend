@@ -17,7 +17,8 @@ export const useCustomStates = () => {
   });
 
   const [ formData, setFormData ] = useState({
-    firstName: "",
+    imageUrl: "",
+    firsName: "",
     lastName: "",
     otherName: "",
     email: "",
@@ -29,7 +30,7 @@ export const useCustomStates = () => {
 
   const [ samePass, setSamePass ] = useState(true);
 
-/* This handles button clicks to the Next page */
+  /* This handles button clicks to the Next page */
   const navigate = useNavigate();
 
   const handleNavigate = (link) => {

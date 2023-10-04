@@ -62,7 +62,7 @@ const Input = ({
   return (
     <>
       { required && value === undefined && <div className='text-red-600'>Required Field</div> }
-      <label label className={ ` ${htmlTag === "textarea" ? "relative mb-2 h-[100px]  rounded-lg border  flex flex-grow w-full" : "relative flex flex-grow w-full"}` }>
+      <label className={ ` ${htmlTag === "textarea" ? "relative mb-2 h-[100px]  rounded-lg border  flex flex-grow w-full" : "relative flex flex-grow w-full"}` }>
         { htmlTag === "textarea" ?
           <textarea
             type={ inputType }
@@ -74,6 +74,7 @@ const Input = ({
             className={ `h-full w-full rounded-lg border px-3 py-3 text-gray-800 focus:outline-none ${className} ${borderClass}` }
             onFocus={ handleFocus }
             onBlur={ handleBlur }
+          // autoComplete='off'
           /> :
           <input
             type={ inputType }
@@ -85,6 +86,7 @@ const Input = ({
             className={ ` h-10 w-full rounded-lg border px-3 py-3 text-gray-800 focus:outline-none ${className} ${borderClass}` }
             onFocus={ handleFocus }
             onBlur={ handleBlur }
+            autoCapitalize='on'
           />
 
         }

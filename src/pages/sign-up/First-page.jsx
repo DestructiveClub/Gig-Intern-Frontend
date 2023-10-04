@@ -1,8 +1,9 @@
-import Google from "../../assets/Google.png";
+// import { useEffect, useState } from "react";
 import { useCustomStates } from "../../components/UseStates.jsx";
 import sideImg from "../../assets/sign.png";
-
+// import axios from "axios";
 import Input from "components/fields/Input";
+import GoogleAuthButton from "components/GoogleAuthButton.jsx";
 
 
 function SignUp () {
@@ -12,6 +13,21 @@ function SignUp () {
     handleNavigate,
     handleFormValueChange
   } = useCustomStates();
+
+  // const handleGoogleSignIn = () => {
+  //   // Replace with your actual client ID and redirect URI
+  //   const clientId = process.env.CLIENT_ID;
+  //   const redirectUri = "http://localhost:3000"; // Replace with your app's redirect URI
+  //   const responseType = "token";
+  //   const scope = "openid profile email"; // Define required scopes
+
+  //   // Build the Google OAuth URL
+  //   const authUrl = `https://accounts.google.com/o/oauth2/auth?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=${responseType}&scope=${scope}`;
+
+  //   // Redirect the user to the Google OAuth URL
+  //   window.location.href = authUrl;
+  // };
+
 
   const classStyle = "sm:text-base text-xs";
 
@@ -94,7 +110,6 @@ function SignUp () {
                 value={ formData.email }
                 onChange={ handleFormValueChange }
                 inputField="Email"
-                required={ true }
                 className={ classStyle }
 
               />
@@ -104,7 +119,6 @@ function SignUp () {
                 value={ formData.phoneNumber }
                 onChange={ handleFormValueChange }
                 inputField="Phone Number"
-                required={ true }
                 className={ classStyle }
 
               />
@@ -176,12 +190,7 @@ function SignUp () {
                 <div className="h-[1px] w-[100%] flex-grow bg-blue-500 bg-opacity-60"></div>
               </div>
 
-              <button className="py-90 rounded-10 my-3 flex  h-[40px] w-[100%] items-center justify-center  gap-[10px] rounded-md border   border-blue-500 px-10">
-                <img className="h-[20px] w-[20px]" src={ Google } alt="" />
-                <h1 className="Roboto-font justify-center items-center leading-{19.2px} text-gray-900 mb-14 mt-14 font-sans sm:text-base text-sm font-bold not-italic opacity-60">
-                  continue with Google
-                </h1>
-              </button>
+              <GoogleAuthButton type="button" id="google-btn" text="Continue with Google" />
             </div>
           </form>
         </div>

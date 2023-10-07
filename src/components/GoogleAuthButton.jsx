@@ -13,7 +13,6 @@ const GoogleAuthButton = ({ type, id, text }) => {
   // const [ user, setUser ] = useState(null);
 
 
-
   const handleGoogleSignInClick = () => {
     // Handle Google Sign-In click here
     // You can use the gapi library or other methods to initiate the sign-in process

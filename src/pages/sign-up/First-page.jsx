@@ -1,11 +1,12 @@
-// import { useEffect, useState } from "react";
+// import { useNavigate, useDispatch } from "react";
 import { useCustomStates } from "../../components/UseStates.jsx";
 import sideImg from "../../assets/sign.png";
 // import axios from "axios";
 import Input from "components/fields/Input";
 import GoogleAuthButton from "components/GoogleAuthButton.jsx";
-
-
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { signInStart, signInSucess, signInFailure } from "../../components/userSlice.js";
 function SignUp () {
   const {
     samePass,
@@ -15,7 +16,7 @@ function SignUp () {
   } = useCustomStates();
 
   // const handleGoogleSignIn = () => {
-  //   // Replace with your actual client ID and redirect URI
+  // Replace with your actual client ID and redirect URI
   //   const clientId = process.env.CLIENT_ID;
   //   const redirectUri = "http://localhost:3000"; // Replace with your app's redirect URI
   //   const responseType = "token";
@@ -27,17 +28,44 @@ function SignUp () {
   //   // Redirect the user to the Google OAuth URL
   //   window.location.href = authUrl;
   // };
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      dispatch(signInStart());
+      const res = await fetch('/api/auth/signin', {
+        method: 'POST',
+        headers: {
+          'content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      console.log(data);
+
+      if (data.sucess === false) {
+        dispatch(signInFailure(data.message));
+        return;
+      }
+      dispatch(signInSucess(data));
+      navigate('/interest');
+    }
+    catch (error) {
+      dispatch(signInFailure(error.message));
+    }
+  };
 
   const classStyle = "sm:text-base text-xs";
 
   return (
     <div
-      className="flex flex-row max-h-full bg-white" >
+      className="flex flex-row max-h-screen bg-white" >
       <div className="relative hidden md:w-1/2 md:flex md:max-h-screen md:object-cover ">
         <div>
 
-          <h1 className="right-75 helvetica-font absolute bottom-[0px] left-1/2 z-10 ml-8 h-[280px] w-[75%] -translate-x-1/2 transform  font-sans text-[30px] font-bold leading-normal text-[white]">
+          <h1 className="right-75 helvetica-font absolute bottom-[0px] left-1/2 z-10 ml-8 h-[280px] w-[75%] -translate-x-1/2 transform font-sans text-[30px] font-bold leading-normal text-[white]">
             Discover, Learn and,
             <br />
             Build your skills
@@ -135,7 +163,6 @@ function SignUp () {
                   inputField="Password"
                   authPass={ samePass }
                   className={ classStyle }
-
                 >
                 </Input>
                 { !samePass ? <p className="text-[14px] text-red-600 flex flex-col mb-[-10px]"> Passwords do not match</p> : <div className="my-[10px]"></div> }
@@ -154,7 +181,13 @@ function SignUp () {
 
                 >
                 </Input>
-                { !samePass ? <p className="text-[14px] text-red-600 flex flex-col mb-[-10px]"> Passwords do not match</p> : <div className="my-[10px]"></div> }
+                { !samePass ?
+                  <p className="text-[14px] text-red-600 flex flex-col mb-[-10px]">
+                    Passwords do not match
+                  </p>
+                  :
+                  <div className="my-[10px]"></div>
+                }
               </div>
             </div>
 
@@ -189,7 +222,6 @@ function SignUp () {
                 </h2>
                 <div className="h-[1px] w-[100%] flex-grow bg-blue-500 bg-opacity-60"></div>
               </div>
-
               <GoogleAuthButton type="button" id="google-btn" text="Continue with Google" />
             </div>
           </form>

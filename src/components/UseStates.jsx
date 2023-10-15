@@ -18,7 +18,7 @@ export const useCustomStates = () => {
 
   const [ formData, setFormData ] = useState({
     imageUrl: "",
-    firsName: "",
+    firstName: "",
     lastName: "",
     otherName: "",
     email: "",

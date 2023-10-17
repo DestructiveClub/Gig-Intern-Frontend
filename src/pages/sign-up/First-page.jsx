@@ -1,12 +1,14 @@
 // import { useNavigate, useDispatch } from "react";
-import { useCustomStates } from "../../components/UseStates.jsx";
+import { useCustomStates } from "../../components/UseStates";
 import sideImg from "../../assets/sign.png";
 // import axios from "axios";
 import Input from "components/fields/Input";
-import GoogleAuthButton from "components/GoogleAuthButton.jsx";
+import GoogleAuthButton from "components/GoogleAuthButton";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from 'react-redux';
-import { signInStart, signInSucess, signInFailure } from "../../components/userSlice.js";
+import { useDispatch, useSelector } from 'react-redux';
+import { signInStart, signInSucess, signInFailure } from "../../components/userSlice";
+
+
 function SignUp () {
   const {
     samePass,
@@ -15,21 +17,12 @@ function SignUp () {
     handleFormValueChange
   } = useCustomStates();
 
-  // const handleGoogleSignIn = () => {
-  // Replace with your actual client ID and redirect URI
-  //   const clientId = process.env.CLIENT_ID;
-  //   const redirectUri = "http://localhost:3000"; // Replace with your app's redirect URI
-  //   const responseType = "token";
-  //   const scope = "openid profile email"; // Define required scopes
-
-  //   // Build the Google OAuth URL
-  //   const authUrl = `https://accounts.google.com/o/oauth2/auth?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=${responseType}&scope=${scope}`;
-
-  //   // Redirect the user to the Google OAuth URL
-  //   window.location.href = authUrl;
-  // };
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.user); // Correct
+
+
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -46,20 +39,21 @@ function SignUp () {
       console.log(data);
 
       if (data.sucess === false) {
-        dispatch(signInFailure(data.message));
+        // dispatch(signInFailure(data.message));
         return;
       }
-      dispatch(signInSucess(data));
+      // dispatch(signInSucess(data));
       navigate('/interest');
     }
     catch (error) {
-      dispatch(signInFailure(error.message));
+      // dispatch(signInFailure(error.message));
     }
   };
 
   const classStyle = "sm:text-base text-xs";
 
   return (
+
     <div
       className="flex flex-row max-h-screen bg-white" >
       <div className="relative hidden md:w-1/2 md:flex md:max-h-screen md:object-cover ">
@@ -116,7 +110,6 @@ function SignUp () {
                 onChange={ handleFormValueChange }
                 inputField="Last Name"
                 className={ classStyle }
-
               />
 
               <Input
@@ -201,7 +194,6 @@ function SignUp () {
                 onChange={ handleFormValueChange }
                 inputField="Bio"
                 className={ classStyle }
-
               >
               </Input>
             </div>

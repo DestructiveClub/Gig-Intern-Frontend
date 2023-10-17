@@ -1,14 +1,14 @@
-import React, { useEffect } from 'react';
+// import React, { useEffect } from 'react';
 import { FcGoogle } from "react-icons/fc";
-import { useCustomStates } from 'components/UseStates';
+// import { useCustomStates } from 'components/UseStates';
 import { GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth';
 import { app } from "../firebase";
 // import { useDispatch } from 'react-redux';
 const GoogleAuthButton = ({ type, id, text }) => {
-  const {
-    formData,
-    // handleFormValueChange
-  } = useCustomStates();
+  // const {
+  //   formData,
+  //   // handleFormValueChange
+  // } = useCustomStates();
 
   // const [ gapi, setGapi ] = useState(null);
   // const [ user, setUser ] = useState(null);
@@ -24,7 +24,7 @@ const GoogleAuthButton = ({ type, id, text }) => {
 
       const result = await signInWithPopup(auth, provider);
 
-      const res = await fetch('/api', {
+      const res = await fetch('https://jsonplaceholder.typicode.com/posts', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -35,15 +35,22 @@ const GoogleAuthButton = ({ type, id, text }) => {
           image: result.user.photoURL,
         }),
       });
-      const data = await res.json();
-      console.log(data);
+
+      if (res.ok) {
+        // Successfully signed in and made a request to your backend
+        const data = await res.json();
+        console.log(data);
+      } else {
+        // Handle errors appropriately
+        console.log('Error:', res.statusText);
+      }
 
       // console.log("User Signed in as:", result);
     } catch (error) {
       console.log("error could not sign in", error);
     }
   };
-  // TODO 
+  // TODO
   // TODO
   return (
     <button type={ type } id={ id } onClick={ handleGoogleSignInClick } className="rounded-[4px]  py-2 flex justify-center border-[1px] border-blue-200 hover:border-sky-200  hover:bg-sky-100 w-full cursor-pointer">

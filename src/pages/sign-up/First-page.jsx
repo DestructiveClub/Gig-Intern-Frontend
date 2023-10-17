@@ -17,10 +17,9 @@ function SignUp () {
     handleFormValueChange
   } = useCustomStates();
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user); // Correct
-
 
 
 
@@ -28,7 +27,7 @@ function SignUp () {
     e.preventDefault();
     try {
       dispatch(signInStart());
-      const res = await fetch('/api/auth/signin', {
+      const res = await fetch('https://gig-intern-gh.onrender.com/api/v1/register', {
         method: 'POST',
         headers: {
           'content-Type': 'application/json',
@@ -39,14 +38,14 @@ function SignUp () {
       console.log(data);
 
       if (data.sucess === false) {
-        // dispatch(signInFailure(data.message));
+        dispatch(signInFailure(data.message));
         return;
       }
-      // dispatch(signInSucess(data));
-      navigate('/interest');
+      dispatch(signInSucess(data));
+      handleNavigate('/interest');
     }
     catch (error) {
-      // dispatch(signInFailure(error.message));
+      dispatch(signInFailure(error.message));
     }
   };
 
@@ -199,7 +198,7 @@ function SignUp () {
             </div>
 
             <div className="flex flex-col items-center w-full">
-              <button className="w-full" onClick={ () => handleNavigate('/interest') }>
+              <button className="w-full" onClick={ handleSubmit }>
                 <div
                   className="Helvetica-font leading-{23.838px} mt-[-8px] py-90 rounded-10 flex h-[50px] w-full items-center justify-center gap-[5px]  rounded-md border bg-blue-500  px-10 font-sans text-[20px] font-bold  not-italic text-white"
                 >
